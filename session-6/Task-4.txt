@@ -1,0 +1,30 @@
+TASK 4: Flipkart 'Add to Wishlist' Button A/B Test Significance Analysis
+========================================================================
+
+Scenario:
+In an A/B test for a new 'Add to Wishlist' button on Flipkart:
+- Out of 1000 users: 520 clicked the new button (52%) vs. 480 who clicked the old button (48%).
+
+------------------------------------------------------------------------
+1. Is This Difference Significant or Likely Due to Chance?
+------------------------------------------------------------------------
+Conclusion:
+This difference is **LIKELY JUST DUE TO CHANCE (NOT STATISTICALLY SIGNIFICANT)**.
+
+Reasoning (Without detailed math):
+- A split of 520 versus 480 out of 1,000 users represents a 52% to 48% split.
+- This is merely a 2% deviation (just 20 clicks) away from an expected 50/50 baseline (500 clicks each).
+- Just like flipping a fair coin 1,000 times will routinely yield 520 heads and 480 tails due to standard random variance, this minor difference easily happens naturally without the new button actually being superior.
+
+------------------------------------------------------------------------
+2. How the p-Value Helps You Decide:
+------------------------------------------------------------------------
+1. Meaning of p-Value:
+   The p-value calculates the probability of getting an observed difference of 520 vs 480 (or more extreme) purely by random luck, assuming both button designs are completely identical in effectiveness (i.e., assuming H0 is true).
+
+2. Decision Rule (The 0.05 Threshold):
+   - In product experimentation, a result is deemed "statistically significant" only if the p-value is **below 0.05 (5%)**, meaning there is less than a 5% chance the observed gain was a fluke.
+   - For this split (520 vs 480 on n = 1,000), the calculated p-value is roughly **0.20 (20%)**.
+
+3. Conclusion:
+   Because the p-value (~0.20) is much greater than 0.05, there is a roughly 1-in-5 chance that this difference was pure coincidence. The p-value tells the team **not to roll out the new button yet**, and that more user data must be gathered before making a product decision.

@@ -1,0 +1,47 @@
+TASK 5: Sampling Techniques for BookMyShow Movie Booking Habits
+================================================================
+
+Objective:
+Select a representative sample of users from BookMyShow to study their movie booking habits (e.g., booking advance notice, ticket quantities, genre preferences, and concession spending).
+
+Two chosen sampling methods:
+1. Stratified Sampling
+2. Systematic Sampling
+
+----------------------------------------------------------------
+1. Stratified Sampling
+----------------------------------------------------------------
+How the Method Works:
+The target population is divided into distinct, non-overlapping subgroups (called "strata") based on an important characteristic that influences booking habits. A random sample is then drawn from each stratum proportionally.
+
+Application to BookMyShow:
+1. Identify the Stratification Characteristic: Divide users into strata based on their "Past Booking Frequency" over the last 6 months:
+   - Stratum A (Frequent Moviegoers): Users who booked 4 or more movies (e.g., 20% of user base).
+   - Stratum B (Occasional Moviegoers): Users who booked 1 to 3 movies (e.g., 50% of user base).
+   - Stratum C (Infrequent / New Users): Users who booked only 1 movie or only browsed (e.g., 30% of user base).
+2. Sample Selection:
+   For a desired total sample of 1,000 users, randomly draw:
+   - 200 users from Stratum A (20%)
+   - 500 users from Stratum B (50%)
+   - 300 users from Stratum C (30%)
+3. Key Benefit:
+   Ensures that every segment—from die-hard cinema lovers to occasional festival watchers—is proportionately represented, preventing high-frequency users from dominating the survey results.
+
+----------------------------------------------------------------
+2. Systematic Sampling
+----------------------------------------------------------------
+How the Method Works:
+Users are selected at regular, fixed numerical intervals (every k-th individual) from an ordered list or live transaction stream, starting from a randomly chosen point.
+
+Application to BookMyShow:
+1. Arrange Population: Take the chronological database stream of all ticket transactions completed on BookMyShow over a weekend (e.g., N = 100,000 total bookings ordered by timestamp).
+2. Determine Interval (k):
+   To collect a sample of n = 1,000 users:
+   k = Population (N) / Sample Size (n) = 100,000 / 1,000 = 100.
+3. Select Starting Point:
+   Randomly pick an initial integer between 1 and 100 (for example, booking #42).
+4. Extract the Sample:
+   Select every 100th booking from that point onwards:
+   - 42nd, 142nd, 242nd, 342nd, ..., 99,942nd booking.
+5. Key Benefit:
+   Extremely easy and automated to execute on high-volume transactional databases. It provides an evenly distributed sample across all movie showtimes (morning matinees, evening peak shows, and midnight screenings) across multiple cinema chains.

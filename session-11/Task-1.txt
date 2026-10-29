@@ -1,0 +1,66 @@
+TASK 1: Playlist Song Durations and Total Duration Calculation
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Create a Python list to represent a playlist of 5 song durations in seconds 
+(e.g., [210, 180, 245, 200, 175]). Print the total duration of the playlist.
+
+--------------------------------------------------------------------------------
+2. Dataset & Structure:
+--------------------------------------------------------------------------------
+A standard 1-Dimensional sequence (List / Vector) in Python:
+- Variable: `song_durations`
+- Elements: [210, 180, 245, 200, 175] (Durations in seconds)
+- Number of tracks (n) = 5 songs
+
+Track Breakdown:
+| Track # | Track Title / Artist             | Duration (Seconds) | Duration (MM:SS) |
+|:-------:|:---------------------------------|:------------------:|:----------------:|
+|    1    | Starboy - The Weeknd             |        210         |       3:30       |
+|    2    | Levitating - Dua Lipa            |        180         |       3:00       |
+|    3    | Bohemian Rhapsody - Queen        |        245         |       4:05       |
+|    4    | Blinding Lights - The Weeknd     |        200         |       3:20       |
+|    5    | Shape of You - Ed Sheeran        |        175         |       2:55       |
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task1_playlist_duration.py):
+--------------------------------------------------------------------------------
+```python
+# 1. Create list of 5 song durations in seconds
+song_durations = [210, 180, 245, 200, 175]
+
+# 2. Calculate total duration
+total_duration_seconds = sum(song_durations)
+
+# 3. Convert to minutes and seconds
+minutes = total_duration_seconds // 60
+seconds = total_duration_seconds % 60
+
+# 4. Display results
+print(f"Playlist Durations: {song_durations}")
+print(f"Total Duration: {total_duration_seconds} seconds ({minutes}m {seconds}s)")
+```
+
+--------------------------------------------------------------------------------
+4. Mathematical Derivation:
+--------------------------------------------------------------------------------
+Sum of durations:
+      Total = 210 + 180 + 245 + 200 + 175
+            = 1,010 seconds
+
+Conversion to minutes and seconds:
+      Minutes = floor(1010 / 60) = 16 minutes
+      Seconds = 1010 mod 60      = 50 seconds
+      Formatted = 16 minutes and 50 seconds (16m 50s)
+
+Average song length:
+      Mean = 1010 / 5 = 202.0 seconds (3 minutes 22 seconds)
+
+--------------------------------------------------------------------------------
+5. Summary:
+--------------------------------------------------------------------------------
+- Total Playlist Duration = **1,010 seconds** (or **16 minutes, 50 seconds**).
+- Represents a 1D vector sum operation, fundamental to sequential signal and 
+  media data processing.
+

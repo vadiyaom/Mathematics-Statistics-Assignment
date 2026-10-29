@@ -1,0 +1,30 @@
+TASK 1: Population vs. Sample in Everyday Apps
+=================================================
+
+Definitions:
+- Population: The entire collection of all individuals, items, or observations that share a common characteristic of interest for a study.
+- Sample: A smaller, representative subset of the population selected for data analysis to draw conclusions about the whole population.
+
+-------------------------------------------------
+Example 1: Zomato (Restaurant Hygiene & Ratings)
+-------------------------------------------------
+- App: Zomato
+- Context: Evaluating food hygiene, packaging quality, and average customer ratings across restaurants in Mumbai.
+- Population: EVERY restaurant currently registered, listed, and actively delivering on Zomato across the entire city of Mumbai (e.g., all 45,000 restaurants).
+- Sample: A randomly chosen group of 500 restaurants across different zones (South Mumbai, Bandra, Andheri, Navi Mumbai) and diverse cuisines selected for physical food audits.
+
+-------------------------------------------------
+Example 2: Flipkart (Customer Smartphone Reviews)
+-------------------------------------------------
+- App: Flipkart
+- Context: Analyzing customer feedback, battery performance satisfaction, and product defect complaints for smartphones.
+- Population: ALL customer product reviews written for all smartphone models sold on Flipkart during the entire year 2026 (e.g., 2,500,000 total reviews).
+- Sample: A randomly extracted subset of 1,000 smartphone reviews covering budget, mid-tier, and premium price categories used for natural language sentiment analysis.
+
+-------------------------------------------------
+Example 3: Instagram (Teen Screen Time & Engagement)
+-------------------------------------------------
+- App: Instagram
+- Context: Studying daily active screen time, Reels consumption, and notifications engagement among teenage accounts.
+- Population: The entire global user base of teenage users (aged 13 to 19) who hold an active Instagram account (e.g., approximately 150 million users worldwide).
+- Sample: A representative group of 5,000 teenage Instagram users surveyed across 10 different countries to record their daily app screen time and weekly reel watch counts.

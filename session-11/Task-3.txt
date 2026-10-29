@@ -1,0 +1,87 @@
+TASK 3: Dish Orders Matrix & Total Orders per Dish (Column Sums)
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Given a matrix representing the number of orders for 4 different dishes across 
+3 days (rows: days, columns: dishes), write code to calculate and print the total 
+orders for each dish.
+
+--------------------------------------------------------------------------------
+2. Mathematical Structure of the 3x4 Matrix:
+--------------------------------------------------------------------------------
+Let M be a 3x4 Matrix representing food orders:
+
+              Col 0: Pizza   Col 1: Burger   Col 2: Pasta   Col 3: Tacos
+Row 0: Day 1       25             40              15             30
+Row 1: Day 2       30             45              20             35
+Row 2: Day 3       20             35              25             40
+
+Rows (i = 0, 1, 2)  : Days
+Columns (j = 0, 1, 2, 3): Dishes
+
+Column Sum Formula:
+To find the total orders for dish j across all days:
+                  3
+      Total_j = Sum M[i][j] = M[0][j] + M[1][j] + M[2][j]
+                 i=1
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task3_dish_orders_totals.py):
+--------------------------------------------------------------------------------
+```python
+import numpy as np
+
+# 1. Define the 3x4 matrix (rows: days, columns: dishes)
+orders_matrix = [
+    [25, 40, 15, 30],  # Day 1
+    [30, 45, 20, 35],  # Day 2
+    [20, 35, 25, 40]   # Day 3
+]
+
+dishes = ["Pizza", "Burger", "Pasta", "Tacos"]
+
+# 2. Pure Python column-wise summation
+num_days = len(orders_matrix)
+num_dishes = len(orders_matrix[0])
+
+dish_totals = []
+for col in range(num_dishes):
+    col_sum = sum(orders_matrix[row][col] for row in range(num_days))
+    dish_totals.append(col_sum)
+
+# 3. Alternative using NumPy (axis=0 sums down columns)
+np_orders = np.array(orders_matrix)
+np_dish_totals = np.sum(np_orders, axis=0)
+
+# Display Results
+for dish, total in zip(dishes, np_dish_totals):
+    print(f"Total orders for {dish}: {total}")
+```
+
+--------------------------------------------------------------------------------
+4. Total Orders Calculation per Dish:
+--------------------------------------------------------------------------------
+1. Dish 1 (Pizza) : Column 0
+   Calculation: 25 + 30 + 20 = **75 orders**
+
+2. Dish 2 (Burger): Column 1
+   Calculation: 40 + 45 + 35 = **120 orders**  <-- Highest Demand Dish
+
+3. Dish 3 (Pasta) : Column 2
+   Calculation: 15 + 20 + 25 = **60 orders**
+
+4. Dish 4 (Tacos) : Column 3
+   Calculation: 30 + 35 + 40 = **105 orders**
+
+Grand Total Orders:
+- Total across all dishes and all days = 75 + 120 + 60 + 105 = **360 orders**
+
+--------------------------------------------------------------------------------
+5. Summary:
+--------------------------------------------------------------------------------
+- In linear algebra and data analysis, summing across rows (axis=0 in NumPy) collapses 
+  the temporal dimension (days) to give aggregate feature totals (dish volumes).
+- Burger emerged as the most popular item with 120 orders, followed by Tacos (105), 
+  Pizza (75), and Pasta (60).
+

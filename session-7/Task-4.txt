@@ -1,0 +1,102 @@
+TASK 4: ChatGPT Dataset & Scatter Plot for Spotify Time vs. Test Marks
+================================================================================
+
+1. Prompt & Task Instructions:
+--------------------------------------------------------------------------------
+Use ChatGPT to generate a small dataset (10 pairs of numbers) that shows a 
+strong negative correlation between time spent on Spotify and marks scored in a test. 
+Paste the dataset and plot it as a scatter plot using matplotlib.
+
+Hint: Ask ChatGPT to "generate 10 pairs of numbers with a strong negative 
+correlation" and specify your variables.
+
+--------------------------------------------------------------------------------
+2. Simulated Prompt Given to ChatGPT:
+--------------------------------------------------------------------------------
+"Please generate 10 pairs of numbers demonstrating a strong negative correlation. 
+The two variables are:
+1. Daily time spent listening to Spotify (in hours, from 0.5 to 6.0 hours)
+2. Marks scored in a test (out of 100 marks, from 30 to 95)
+Please present the dataset in a formatted table and provide the Pearson correlation 
+coefficient r."
+
+--------------------------------------------------------------------------------
+3. ChatGPT Generated Dataset (10 Pairs of Numbers):
+--------------------------------------------------------------------------------
+| Student ID | Daily Spotify Listening (Hours) [X] | Test Marks (Out of 100) [Y] |
+|:----------:|:-----------------------------------:|:---------------------------:|
+| Student 1  |                 0.5                 |             95              |
+| Student 2  |                 1.0                 |             91              |
+| Student 3  |                 1.5                 |             86              |
+| Student 4  |                 2.0                 |             82              |
+| Student 5  |                 2.8                 |             75              |
+| Student 6  |                 3.5                 |             68              |
+| Student 7  |                 4.0                 |             60              |
+| Student 8  |                 4.8                 |             52              |
+| Student 9  |                 5.2                 |             45              |
+| Student 10 |                 6.0                 |             34              |
+
+Summary Statistics:
+- Mean Spotify Hours (X_bar) = 3.13 hours
+- Mean Test Marks (Y_bar)    = 68.80 marks
+- Pearson Correlation Coefficient (r) = -0.9945 (Strong Negative)
+
+--------------------------------------------------------------------------------
+4. Python Matplotlib Script (task4_spotify_marks.py):
+--------------------------------------------------------------------------------
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Dataset
+spotify_hours = [0.5, 1.0, 1.5, 2.0, 2.8, 3.5, 4.0, 4.8, 5.2, 6.0]
+test_marks    = [95,  91,  86,  82,  75,  68,  60,  52,  45,  34 ]
+
+# 2. Calculate Correlation
+r = np.corrcoef(spotify_hours, test_marks)[0, 1]
+print(f"Pearson Correlation Coefficient (r): {r:.4f}")
+
+# 3. Scatter Plot with Trendline
+plt.figure(figsize=(9, 6))
+plt.scatter(spotify_hours, test_marks, color="#1DB954", s=120, edgecolors="black", label="Students")
+
+# Trendline
+m, c = np.polyfit(spotify_hours, test_marks, 1)
+x_line = np.linspace(0.2, 6.3, 50)
+plt.plot(x_line, m * x_line + c, color="#E74C3C", linestyle="--", label=f"Trendline: y = {m:.2f}x + {c:.2f}")
+
+plt.title("Time Spent on Spotify vs. Test Marks (Strong Negative Correlation)")
+plt.xlabel("Daily Time Spent on Spotify (Hours/Day)")
+plt.ylabel("Test Marks (Out of 100)")
+plt.grid(True, linestyle=":", alpha=0.6)
+plt.legend()
+plt.savefig("spotify_vs_marks_scatter.png")
+plt.show()
+```
+
+--------------------------------------------------------------------------------
+5. Visual Description & Statistical Explanation:
+--------------------------------------------------------------------------------
+When observing the scatter plot (`spotify_vs_marks_scatter.png`):
+
+1. Direction of the Trend:
+   The data points form a pronounced **downward-sloping pattern** that begins in 
+   the upper-left quadrant (low Spotify time, high marks ~95) and moves 
+   continuously toward the lower-right quadrant (high Spotify time, low marks ~34).
+
+2. Inverse Co-movement:
+   As the independent variable (Spotify listening time) increases along the 
+   horizontal axis, the dependent variable (test marks) steadily decreases along 
+   the vertical axis.
+
+3. Strength of Correlation:
+   The points fall very tightly along the downward-sloping linear trendline 
+   (y = -10.90x + 102.94). With a Pearson correlation coefficient of r = -0.9945, 
+   this dataset demonstrates an exceptionally **STRONG NEGATIVE CORRELATION**.
+
+4. Real-World Context:
+   While listening to music can aid relaxation, excessive passive audio time 
+   (4 to 6 hours per day) in this scenario serves as a proxy for digital distraction, 
+   reduced active study time, and sleep deprivation leading up to an exam, which 
+   manifests as lower test scores.
+

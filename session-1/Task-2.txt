@@ -1,0 +1,13 @@
+TASK 2: Music Genre Data Classification and Reasoning
+=====================================================
+
+Sample Data:
+['Pop', 'Rock', 'Jazz', 'Hip-Hop', 'Pop', 'Rock', 'Jazz', 'Pop']
+
+1. Classification:
+   Categorical Data (Specifically: Nominal Data / Qualitative Data)
+
+2. Reasoning:
+   - The data points are descriptive text labels representing different music genres (qualities/attributes) rather than measurable numerical amounts.
+   - There is no inherent numerical value, natural rank, or logical mathematical ordering among genres (e.g., 'Pop' is neither mathematically greater than nor lesser than 'Rock').
+   - Arithmetic operations such as addition, subtraction, or calculating a mean are meaningless for this data; instead, only frequency counts, proportions, and the mode ('Pop', appearing 3 times) can be determined.

@@ -1,0 +1,46 @@
+TASK 4: Startup Salary Variance, Standard Deviation, and Interpretation
+========================================================================
+
+Monthly Salary Data (6 Employees):
+[28000, 29000, 27000, 60000, 26500, 27500]
+
+Number of employees (n) = 6
+
+------------------------------------------------------------------------
+1. Mean Salary (x_bar):
+------------------------------------------------------------------------
+   Sum = 28,000 + 29,000 + 27,000 + 60,000 + 26,500 + 27,500 = Rs. 198,000
+   Mean = 198,000 / 6 = Rs. 33,000.00
+
+------------------------------------------------------------------------
+2. Deviations and Squared Deviations from Mean (Rs. 33,000):
+------------------------------------------------------------------------
+   - Employee 1: (28,000 - 33,000) = -5,000  --> (-5,000)^2  =  25,000,000
+   - Employee 2: (29,000 - 33,000) = -4,000  --> (-4,000)^2  =  16,000,000
+   - Employee 3: (27,000 - 33,000) = -6,000  --> (-6,000)^2  =  36,000,000
+   - Employee 4: (60,000 - 33,000) = +27,000 --> (27,000)^2  = 729,000,000
+   - Employee 5: (26,500 - 33,000) = -6,500  --> (-6,500)^2  =  42,250,000
+   - Employee 6: (27,500 - 33,000) = -5,500  --> (-5,500)^2  =  30,250,000
+
+   Sum of Squared Deviations:
+   sum( (x_i - x_bar)^2 ) = 25,000,000 + 16,000,000 + 36,000,000 + 729,000,000 
+                            + 42,250,000 + 30,250,000
+                          = 878,500,000
+
+------------------------------------------------------------------------
+3. Variance & Standard Deviation:
+------------------------------------------------------------------------
+
+A. Population Metrics (N = 6):
+   - Population Variance (sigma^2)      = 878,500,000 / 6 = 146,416,666.67
+   - Population Standard Dev (sigma)    = sqrt(146,416,666.67) = Rs. 12,100.28
+
+B. Sample Metrics (n - 1 = 5):
+   - Sample Variance (s^2)              = 878,500,000 / 5 = 175,700,000.00
+   - Sample Standard Dev (s)            = sqrt(175,700,000.00) = Rs. 13,255.19
+
+------------------------------------------------------------------------
+4. Interpretation of High Spread (2-3 lines):
+------------------------------------------------------------------------
+The high variance and standard deviation (over Rs. 12,000 to Rs. 13,000) indicate substantial pay disparity and salary polarization across the startup. 
+Five out of the six employees earn very similar salaries clustered tightly between Rs. 26,500 and Rs. 29,000, but a single outlier of Rs. 60,000 (such as a founder, executive, or lead architect) inflates the average to Rs. 33,000 and causes this wide dispersion.

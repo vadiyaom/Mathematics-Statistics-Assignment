@@ -1,0 +1,98 @@
+TASK 3: Naive Bayes Spam Detection Filter Simulation (20 Emails)
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Simulate a basic spam detection filter: Given a list of 20 email subjects 
+(some spam, some not), and the probability that 'free' appears in spam vs 
+non-spam emails, write code to calculate the probability an email is spam if 
+it contains 'free', using Bayes' theorem.
+
+--------------------------------------------------------------------------------
+2. Theoretical Framework: Naive Bayes Email Classification
+--------------------------------------------------------------------------------
+When filtering emails, we want to evaluate:
+"Given that an incoming email contains the trigger token 'free', what is the 
+posterior probability that this email is SPAM?"
+
+Bayes' Theorem Formulation:
+                                   P(Spam) * P('free' | Spam)
+             P(Spam | 'free') = --------------------------------
+                                           P('free')
+
+Where Marginal Evidence P('free') is expanded via the Law of Total Probability:
+      P('free') = P(Spam) * P('free' | Spam) + P(Ham) * P('free' | Ham)
+
+--------------------------------------------------------------------------------
+3. Training Corpus (20 Labeled Email Subjects):
+--------------------------------------------------------------------------------
+A. Spam Emails (8 emails):
+   1. "Win a free luxury cruise trip to Bahamas today!"      --> Contains 'free'
+   2. "Claim your free gift card worth Rs. 5000"             --> Contains 'free'
+   3. "Urgent: Free bitcoin bonus deposited in your wallet"  --> Contains 'free'
+   4. "Exclusive free trial access for VIP members"          --> Contains 'free'
+   5. "Get your free credit score report instantly"          --> Contains 'free'
+   6. "Free entry to the international lucky draw"           --> Contains 'free'
+   7. "Congratulations! You won 1,000,000 cash prize"        --> No 'free'
+   8. "Fast personal loans approved with zero collateral"    --> No 'free'
+
+   Summary for Spam:
+   - Total Spam = 8
+   - Spam containing 'free' = 6
+   - P('free' | Spam) = 6 / 8 = 0.75 (75.0%)
+
+B. Ham / Legitimate Emails (12 emails):
+   1. "Are you free for a quick sync call tomorrow afternoon?"--> Contains 'free'
+   2. "Feel free to review the attached project proposal"     --> Contains 'free'
+   3. "Quarterly financial budget and expense spreadsheet"    --> No 'free'
+   4. "Doctor appointment confirmation for Thursday at 4 PM"  --> No 'free'
+   5. "Notes and action items from the team retrospective"    --> No 'free'
+   6. "Flight ticket booking confirmation and boarding pass"  --> No 'free'
+   7. "Weekly Python data science assignment submission"      --> No 'free'
+   8. "Invoice for September cloud hosting services"          --> No 'free'
+   9. "Family dinner plans this coming Saturday evening"      --> No 'free'
+   10."Gym membership monthly subscription renewal receipt"   --> No 'free'
+   11."Campus interview schedule and candidate briefing"      --> No 'free'
+   12."Software engineering sprint retrospective notes"       --> No 'free'
+
+   Summary for Ham:
+   - Total Ham = 12
+   - Ham containing 'free' = 2
+   - P('free' | Ham) = 2 / 12 = 0.1667 (16.67%)
+
+--------------------------------------------------------------------------------
+4. Statistical Calculations:
+--------------------------------------------------------------------------------
+1. Prior Probabilities:
+   - P(Spam) = 8 / 20  = 0.4000 (40.0%)
+   - P(Ham)  = 12 / 20 = 0.6000 (60.0%)
+
+2. Likelihood Probabilities:
+   - P('free' | Spam) = 6 / 8  = 0.7500 (75.0%)
+   - P('free' | Ham)  = 2 / 12 = 0.1667 (16.67%)
+
+3. Total Evidence P('free'):
+   - Emails containing 'free' = 6 + 2 = 8 emails out of 20
+   - P('free') = 8 / 20 = 0.4000 (40.0%)
+   - (Verification via Total Probability: 0.40 * 0.75 + 0.60 * 0.1667 = 0.30 + 0.10 = 0.40)
+
+4. Posterior Probability:
+   - P(Spam | 'free') = (0.40 * 0.75) / 0.40
+                      = 0.30 / 0.40
+                      = 0.7500 (or 75.00%)
+
+   - Complement: P(Ham | 'free') = 1 - 0.75 = 0.2500 (or 25.00%)
+
+--------------------------------------------------------------------------------
+5. Classifier Decision & Industry Insight:
+--------------------------------------------------------------------------------
+- Decision Rule:
+  Because P(Spam | 'free') = 75.0% > 50.0% (classification threshold), the spam 
+  filter flags any email subject containing the word 'free' as **SPAM** and 
+  routes it to the Junk folder.
+- Production Extension:
+  In modern production email systems (Gmail, Outlook), Naive Bayes is extended to 
+  evaluate multiple words simultaneously (e.g. 'free', 'win', 'urgent', 'bonus') 
+  using conditional independence:
+  P(Spam | w1, w2, ..., wn) proportional to P(Spam) * Product(P(wi | Spam)).
+

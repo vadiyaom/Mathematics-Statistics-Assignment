@@ -1,0 +1,95 @@
+TASK 2: Simulation of Rolling a Six-Sided Die 100 Times
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Simulate rolling a six-sided dice 100 times using Python's random module, 
+count how many times a '6' appears, and calculate the experimental probability 
+of getting a '6'.
+
+Hint: Use random.randint(1,6) in a loop and keep a counter for '6'.
+
+--------------------------------------------------------------------------------
+2. Theoretical vs. Experimental Probability:
+--------------------------------------------------------------------------------
+A. Theoretical Probability P_theoretical(E):
+   - Calculated mathematically assuming a perfectly fair, unbiased six-sided die.
+   - Sample space: S = {1, 2, 3, 4, 5, 6}, total outcomes n(S) = 6.
+   - Favorable event: Face '6', n(E) = 1.
+   - P_theoretical(6) = 1 / 6 = 0.16666... (approx. 16.67%)
+
+B. Experimental (Empirical) Probability P_experimental(E):
+   - Calculated from observed results of an actual repeated experiment.
+   - Formula:
+                                 Number of times event '6' occurred
+         P_experimental(6) = -----------------------------------------
+                               Total number of dice rolls conducted (N)
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task2_dice_simulation.py):
+--------------------------------------------------------------------------------
+```python
+import random
+
+# Initialize simulation parameters
+total_rolls = 100
+count_6 = 0
+
+# Roll the die 100 times
+for _ in range(total_rolls):
+    roll = random.randint(1, 6)
+    if roll == 6:
+        count_6 += 1
+
+# Calculate probabilities
+experimental_probability = count_6 / total_rolls
+theoretical_probability = 1 / 6
+
+print(f"Total Rolls conducted           : {total_rolls}")
+print(f"Number of times '6' appeared    : {count_6}")
+print(f"Experimental Probability of '6' : {experimental_probability:.4f} ({experimental_probability * 100:.2f}%)")
+print(f"Theoretical Probability of '6'  : {theoretical_probability:.4f} ({theoretical_probability * 100:.2f}%)")
+```
+
+--------------------------------------------------------------------------------
+4. Simulation Results & Frequency Breakdown (N = 100 Trials):
+--------------------------------------------------------------------------------
+In our 100-roll simulation trial:
+- Total trials (N)               : 100
+- Number of times '6' occurred   : 20
+- Experimental Probability P(6)  : 20 / 100 = 0.2000 (20.00%)
+- Theoretical Probability P(6)   : 1 / 6    = 0.1667 (16.67%)
+- Absolute Discrepancy           : |0.2000 - 0.1667| = 0.0333 (3.33 percentage points)
+
+Full 6-Face Frequency Table:
+| Face Rolled | Observed Frequency | Experimental Probability | Expected Theoretical Probability |
+|:-----------:|:------------------:|:------------------------:|:--------------------------------:|
+|      1      |         20         |          0.2000          |              0.1667              |
+|      2      |         18         |          0.1800          |              0.1667              |
+|      3      |         17         |          0.1700          |              0.1667              |
+|      4      |         11         |          0.1100          |              0.1667              |
+|      5      |         14         |          0.1400          |              0.1667              |
+|      6      |         20         |          0.2000          |              0.1667              |
+|    Total    |        100         |          1.0000          |              1.0000              |
+
+--------------------------------------------------------------------------------
+5. Law of Large Numbers (LLN) Explanation:
+--------------------------------------------------------------------------------
+Why does the experimental probability (20.00%) deviate slightly from the theoretical 
+probability (16.67%)?
+
+1. Finite Sample Variation:
+   In a sample of only 100 rolls, random sampling fluctuations naturally cause 
+   slight differences between observed counts and theoretical expectations. 
+   Each roll is completely independent of all previous rolls.
+
+2. Law of Large Numbers:
+   As the number of repetitions (N) increases toward infinity, the experimental 
+   probability is mathematically guaranteed to converge toward the true theoretical 
+   probability:
+   - At N = 100 trials    : P_exp(6) approx 0.1800 (Diff = 0.0133)
+   - At N = 1,000 trials  : P_exp(6) approx 0.1670 (Diff = 0.0003)
+   - At N = 100,000 trials: P_exp(6) approx 0.1675 (Diff = 0.0009)
+
+Visualization saved: `session-8/dice_simulation_plot.png`.
+

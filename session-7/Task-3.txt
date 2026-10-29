@@ -1,0 +1,53 @@
+TASK 3: Daily Life Variables Correlation Analysis
+================================================================================
+
+1. Prompt & Task Objective:
+--------------------------------------------------------------------------------
+Think of two variables from your daily life (for example, number of YouTube videos 
+watched per day and daily study hours). Write a short paragraph describing 
+whether you expect a positive, negative, or zero correlation between them, and why.
+
+--------------------------------------------------------------------------------
+2. Primary Daily Life Variables:
+--------------------------------------------------------------------------------
+- Variable X: Number of entertainment YouTube videos watched per day (Entertainment Screen Time)
+- Variable Y: Daily study hours spent on coursework and coding (Productive Academic Time)
+
+--------------------------------------------------------------------------------
+3. Written Paragraph & Correlation Analysis:
+--------------------------------------------------------------------------------
+I expect a strong **NEGATIVE CORRELATION** between the number of YouTube videos 
+watched per day and daily study hours. This inverse relationship arises primarily 
+because time is a strictly finite, non-renewable resource bounded by exactly 24 hours 
+each day. After accounting for mandatory non-discretionary commitments—such as 7 to 8 
+hours of sleep, meals, personal hygiene, and daily transit—an individual typically 
+has only 6 to 9 hours of flexible waking time. Consequently, any hour surrendered 
+to watching algorithmic entertainment videos on YouTube directly cannibalizes the 
+discretionary block available for concentrated study. Furthermore, psychological 
+factors such as cognitive fatigue, dopamine overstimulation, and "attention residue" 
+play a critical role: spending hours consuming rapid digital video content drains 
+mental stamina and willpower, leading to heightened academic procrastination and 
+shorter, less frequent study sessions. Therefore, as daily YouTube video consumption 
+increases, total productive study hours consistently decline.
+
+--------------------------------------------------------------------------------
+4. Summary Table of Daily Life Scenarios:
+--------------------------------------------------------------------------------
+For a well-rounded statistical perspective, here is how the three correlation 
+types manifest in everyday life:
+
+| Daily Variables Considered                          | Expected Correlation | Rationale & Mechanism |
+|:----------------------------------------------------|:--------------------:|:----------------------|
+| 1. YouTube videos watched vs. Daily study hours     | **Negative**         | Zero-sum daily time budget; screen bingeing directly displaces focused study time. |
+| 2. Daily workout duration (mins) vs. Water intake (L)| **Positive**        | Physical exertion increases metabolic rate and sweat loss, driving physiological thirst. |
+| 3. Daily study hours vs. Shoe size                  | **Zero**             | Cognitive academic habits have no biological or causal link to anatomical foot dimensions. |
+
+--------------------------------------------------------------------------------
+5. Key Takeaways:
+--------------------------------------------------------------------------------
+- A negative correlation (r < 0) implies an inverse trade-off: an increase in one 
+  activity necessitates or accompanies a reduction in the other.
+- Correlation measures linear association, but underlying causal mechanisms 
+  (such as finite time limits and cognitive energy expenditure) explain WHY the 
+  association exists in daily human routines.
+

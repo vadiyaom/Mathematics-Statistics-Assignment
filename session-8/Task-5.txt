@@ -1,0 +1,109 @@
+TASK 5: Using Conditional Probability to Improve Recommendations in Flipkart
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Explain with a short Python code example how conditional probability could be 
+used to improve recommendations in an app like Flipkart (e.g., probability of 
+buying headphones given user bought a phone).
+
+Hint: Use counts of users who bought both items vs total who bought a phone.
+
+--------------------------------------------------------------------------------
+2. Mathematical Concept: Conditional Probability P(B | A)
+--------------------------------------------------------------------------------
+Conditional probability quantifies the likelihood that event B occurs, given 
+prior knowledge that event A has already occurred.
+
+Formal Formula:
+                             P(A INTERSECT B)      Count(A and B)
+         P(B | A) = ---------------------------- = -----------------
+                                  P(A)                 Count(A)
+
+Where:
+- Event A : User purchases a Smartphone
+- Event B : User purchases Wireless Headphones
+- (A and B): User purchases both a Smartphone AND Wireless Headphones
+
+Therefore:
+                                     Count of users who bought (Phone AND Headphones)
+      P(Headphones | Phone) = -------------------------------------------------------------
+                                          Total count of users who bought a Phone
+
+--------------------------------------------------------------------------------
+3. Why Conditional Probability Revolutionizes Recommendations:
+--------------------------------------------------------------------------------
+A. Moving Beyond Naive Popularity:
+   If an e-commerce platform only looks at raw marginal probabilities P(B), it 
+   will recommend the same universally popular items (e.g., groceries, t-shirts, 
+   or phone cables) to every visitor regardless of context.
+
+B. Contextual Intent & Basket Analysis (Association Rules):
+   When a user adds a Rs. 25,000 smartphone to their cart, their shopping context 
+   dramatically shifts. The prior baseline probability of someone buying premium 
+   headphones on any random session might only be 28% (P(Headphones) = 0.28). 
+   However, conditioned on buying a smartphone, the likelihood jumps to 65% 
+   (P(Headphones | Phone) = 0.65). 
+
+C. Lift & Recommendation Ranking:
+   The "Lift" is calculated as:
+                    P(Headphones | Phone)       0.65
+           Lift = ------------------------- = -------- = 2.32x
+                       P(Headphones)            0.28
+   A phone buyer is 2.32 times more likely to purchase headphones than a random 
+   shopper. Flipkart uses this exact metric to rank its "Frequently Bought Together" 
+   and "Complete Your Setup" widgets.
+
+--------------------------------------------------------------------------------
+4. Short Python Code Example (task5_flipkart_recommendation.py):
+--------------------------------------------------------------------------------
+```python
+# Flipkart Transaction Data Summary
+total_users = 1000
+phone_buyers = 400                    # Users who bought a Smartphone (A)
+both_phone_and_headphones = 260       # Users who bought BOTH Phone & Headphones (A & B)
+
+# Calculate Conditional Probability: P(Headphones | Phone)
+p_headphones_given_phone = both_phone_and_headphones / phone_buyers
+
+# Calculate Unconditional (Baseline) Probability: P(Headphones)
+total_headphones_buyers = 280
+p_headphones_baseline = total_headphones_buyers / total_users
+
+# Calculate Lift
+lift = p_headphones_given_phone / p_headphones_baseline
+
+print(f"Total Phone Buyers                 : {phone_buyers}")
+print(f"Bought both Phone and Headphones   : {both_phone_and_headphones}")
+print(f"P(Headphones | Phone)              : {p_headphones_given_phone:.2f} ({p_headphones_given_phone * 100:.1f}%)")
+print(f"Baseline P(Headphones)             : {p_headphones_baseline:.2f} ({p_headphones_baseline * 100:.1f}%)")
+print(f"Recommendation Lift                : {lift:.2f}x higher likelihood")
+```
+
+Output:
+- Total Phone Buyers                 : 400
+- Bought both Phone and Headphones   : 260
+- P(Headphones | Phone)              : 0.65 (65.0%)
+- Baseline P(Headphones)             : 0.28 (28.0%)
+- Recommendation Lift                : 2.32x higher likelihood
+
+--------------------------------------------------------------------------------
+5. Multi-Product Recommendation Ranking in Flipkart:
+--------------------------------------------------------------------------------
+By evaluating conditional probabilities across a catalog of candidate items, 
+Flipkart ranks the most relevant suggestions:
+
+| Rank | Candidate Accessory Item | Bought with Phone | P(Item \| Phone) | Recommendation Action |
+|:----:|:-------------------------|:-----------------:|:----------------:|:----------------------|
+|  #1  | Screen Protector         |        340        |      85.0%       | Show as 1st add-on checkbox on product page |
+|  #2  | Phone Case / Cover       |        320        |      80.0%       | Show as 2nd add-on checkbox on product page |
+|  #3  | Wireless Headphones      |        260        |      65.0%       | Show in "Frequently Bought Together" bundle |
+|  #4  | Power Bank               |        120        |      30.0%       | Show in post-purchase "You Might Also Need" |
+|  #5  | Smart Watch              |        90         |      22.5%       | Secondary promotional carousel |
+|  #6  | Microwave Oven           |        10         |       2.5%       | Suppressed / Not Recommended |
+
+Business Impact:
+1. Higher Conversion Rate (CR) : Showing high-probability accessories converts passive browsing into active cross-sells.
+2. Higher Average Order Value (AOV): Prompting a Rs. 1,499 headphone or Rs. 299 screen guard at checkout increases order revenue with minimal customer acquisition friction.
+3. Enhanced User Experience (UX): Reduces customer search friction by anticipating what accessories they immediately need.
+

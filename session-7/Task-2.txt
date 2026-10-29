@@ -1,0 +1,101 @@
+TASK 2: Correlation Analysis for Zomato & Swiggy Monthly Orders (6 Friends)
+================================================================================
+
+1. Problem Statement:
+--------------------------------------------------------------------------------
+Given data for 6 friends: their monthly Zomato order count and their monthly 
+Swiggy order count, calculate the correlation coefficient between the two lists 
+using numpy's corrcoef(). Print the result and explain if the correlation is 
+positive, negative, or zero.
+
+--------------------------------------------------------------------------------
+2. Dataset (Monthly Orders for 6 Friends):
+--------------------------------------------------------------------------------
+| Friend               | Monthly Zomato Orders [X] | Monthly Swiggy Orders [Y] |
+|:---------------------|:-------------------------:|:-------------------------:|
+| Friend 1 (Aarav)     |            12             |            14             |
+| Friend 2 (Bhavna)    |            18             |            20             |
+| Friend 3 (Chirag)    |             5             |             4             |
+| Friend 4 (Divya)     |            22             |            25             |
+| Friend 5 (Eshan)     |             8             |             7             |
+| Friend 6 (Farhan)    |            15             |            17             |
+
+- Number of friends (n) = 6
+- Variable X = Monthly order count on Zomato
+- Variable Y = Monthly order count on Swiggy
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task2_zomato_swiggy.py):
+--------------------------------------------------------------------------------
+```python
+import numpy as np
+
+# Monthly order counts for 6 friends
+zomato_orders = [12, 18, 5, 22, 8, 15]
+swiggy_orders = [14, 20, 4, 25, 7, 17]
+
+# Calculate correlation matrix using numpy's corrcoef()
+corr_matrix = np.corrcoef(zomato_orders, swiggy_orders)
+r = corr_matrix[0, 1]
+
+print("NumPy Correlation Matrix:")
+print(corr_matrix)
+print(f"\nPearson Correlation Coefficient (r): {r:.5f}")
+```
+
+--------------------------------------------------------------------------------
+4. Mathematical & Programmatic Output:
+--------------------------------------------------------------------------------
+A. Correlation Matrix from `np.corrcoef()`:
+   [[1.          0.99607172]
+    [0.99607172  1.        ]]
+
+B. Understanding the Matrix Structure:
+   - Index [0, 0] = r_xx = Correlation of Zomato with Zomato = 1.0000
+   - Index [1, 1] = r_yy = Correlation of Swiggy with Swiggy = 1.0000
+   - Index [0, 1] and [1, 0] = r_xy = Correlation between Zomato and Swiggy:
+     r = +0.9961 (or 0.99607)
+
+--------------------------------------------------------------------------------
+5. Detailed Explanation (Positive, Negative, or Zero?):
+--------------------------------------------------------------------------------
+A. Mathematical Evaluation:
+   - Theoretical Range: -1.0 <= r <= +1.0
+   - Positive Correlation : r > 0
+   - Negative Correlation : r < 0
+   - Zero Correlation     : r = 0 (or r approx 0)
+
+   Because the computed correlation coefficient is r = +0.9961 (> 0), the relationship 
+   is a **VERY STRONG POSITIVE CORRELATION**.
+
+B. What This Means Statistically:
+   - The two variables move strongly in tandem (co-directional movement).
+   - As a friend's monthly order count on Zomato increases, their monthly order 
+     count on Swiggy also increases proportionally.
+   - For example:
+     * High Orders: Divya has the highest Zomato orders (22) and also the highest 
+       Swiggy orders (25).
+     * Low Orders: Chirag has the lowest Zomato orders (5) and also the lowest 
+       Swiggy orders (4).
+
+C. Real-World Behavioral & Economic Context:
+   - Overall Propensity for Food Delivery:
+     In real-world consumer behavior, people who rely heavily on food delivery 
+     (e.g., busy software engineers, college students with demanding schedules, 
+     or frequent takeout diners) tend to use BOTH major platforms simultaneously. 
+     They cross-shop between Zomato and Swiggy depending on delivery time, 
+     active coupon codes, or specific restaurant exclusivity.
+   - Conversely, individuals who prefer cooking at home or eating at mess halls 
+     maintain an extremely low order volume across all food delivery platforms.
+   - Hence, user habit and dining lifestyle generate a distinct positive correlation.
+
+D. What Would Other Outcomes Mean?
+   - Negative Correlation (r < 0): 
+     Would occur under a strict "Substitution Effect" with a fixed takeout quota. 
+     For example, if every friend strictly placed exactly 20 takeout meals per 
+     month, ordering more from Zomato would necessarily mean ordering less 
+     from Swiggy.
+   - Zero Correlation (r approx 0): 
+     Would indicate that knowing a person's Zomato ordering habits provides zero 
+     predictive power over how many times they order from Swiggy (complete independence).
+

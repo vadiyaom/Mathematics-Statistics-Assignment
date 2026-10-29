@@ -1,0 +1,47 @@
+TASK 4: Flipkart Product Ratings Skewness & Rough Graph
+==========================================================
+
+1. Given Dataset (Flipkart Star Ratings):
+   [3, 3, 4, 4, 4, 5, 5, 5, 5, 5]
+   Total Ratings (n) = 10
+
+----------------------------------------------------------
+2. Frequency Table:
+----------------------------------------------------------
+   Rating 1 Star : 0 reviews
+   Rating 2 Star : 0 reviews
+   Rating 3 Star : 2 reviews  (20%)
+   Rating 4 Star : 3 reviews  (30%)
+   Rating 5 Star : 5 reviews  (50%)
+
+----------------------------------------------------------
+3. Rough Frequency Graph (ASCII Bar Chart):
+----------------------------------------------------------
+Rating | Frequency | Bar Graph
+-------+-----------+-------------------------------------
+  1    |     0     | 
+  2    |     0     | 
+  3    |     2     | ******** (2)  <-- Tail stretches left
+  4    |     3     | ************ (3)
+  5    |     5     | ******************** (5) [Peak / Mode]
+
+(Visual plot file also generated: `flipkart_ratings_plot.png`)
+
+----------------------------------------------------------
+4. Summary Statistics:
+----------------------------------------------------------
+- Mode   = 5.0 (Highest frequency, 5 ratings)
+- Median = (4 + 5) / 2 = 4.5
+- Mean   = (3*2 + 4*3 + 5*5) / 10 = (6 + 12 + 25) / 10 = 43 / 10 = 4.30
+
+Relationship: Mean (4.30) < Median (4.50) < Mode (5.0)
+
+----------------------------------------------------------
+5. Distribution Classification:
+----------------------------------------------------------
+The distribution is **LEFT-SKEWED (Negatively Skewed)**.
+
+----------------------------------------------------------
+6. One-Line Justification:
+----------------------------------------------------------
+The distribution is left-skewed because ratings cluster heavily at the high end (5 stars) while the tail stretches toward the lower ratings on the left, pulling the Mean (4.3) below the Median (4.5) and Mode (5).

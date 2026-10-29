@@ -1,0 +1,49 @@
+TASK 3: A/B Test Design for a Mobile App Feature
+=================================================
+
+Chosen Feature & App:
+Redesigned Sticky "1-Click UPI Pay" Button on Paytm Checkout Page
+
+-------------------------------------------------
+1. Overview of the Experiment:
+-------------------------------------------------
+Currently, when Paytm users proceed to checkout, they land on a page with multiple payment options (Wallet, Net Banking, UPI, Cards) and must scroll to tap a standard "Proceed to Pay" button. 
+The proposed feature introduces a prominent, persistent "1-Click UPI Pay" button at the bottom of the screen displaying the user's primary linked bank account, allowing instant authorization.
+
+-------------------------------------------------
+2. Control and Variant Groups:
+-------------------------------------------------
+- Control Group (Group A - 50% of traffic):
+  Users see the existing standard checkout screen requiring manual selection of payment mode followed by tapping "Proceed to Pay".
+- Variant Group (Group B - 50% of traffic):
+  Users see the redesigned checkout page with the prominent, sticky "1-Click UPI Pay" button pre-configured with their default UPI bank account.
+
+User Allocation:
+A randomized 50/50 split across 100,000 active transacting users over a 14-day test period, ensuring both weekday and weekend shopping behaviors are captured.
+
+-------------------------------------------------
+3. Metrics to Measure:
+-------------------------------------------------
+- Primary Metric: Payment Checkout Conversion Rate (%)
+  Formula:
+     Conversion Rate = (Successfully Completed Transactions / Total Checkout Page Visits) * 100
+
+- Secondary Guardrail Metrics:
+  1. Average Checkout Completion Time (in seconds, tracking speed).
+  2. Payment Failure / UPI Timeout Rate (%) (ensuring the new button does not introduce technical errors).
+
+-------------------------------------------------
+4. Hypotheses:
+-------------------------------------------------
+- Null Hypothesis (H0):
+  The redesigned "1-Click UPI Pay" button has no effect on the checkout conversion rate compared to the existing layout.
+  Mathematical Form: H0: p_variant <= p_control (or p_variant = p_control)
+
+- Alternative Hypothesis (H1):
+  The redesigned "1-Click UPI Pay" button significantly increases the checkout conversion rate compared to the existing layout.
+  Mathematical Form: H1: p_variant > p_control
+
+-------------------------------------------------
+5. Decision Rule:
+-------------------------------------------------
+If the two-sample z-test for proportions yields a p-value < 0.05 (with conversion rate significantly higher in Group B and no spike in failure rates), Paytm will reject H0 and roll out the 1-Click button to 100% of all users.

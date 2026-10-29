@@ -1,0 +1,19 @@
+TASK 4: Playlist Recommendation Using Basic Statistical Terms
+==============================================================
+
+Context:
+Building a new personalized playlist recommendation engine for a Spotify-like music streaming platform.
+
+Three Basic Statistical Terms & Their Applications:
+
+1. Mode (Measure of Central Tendency for Categorical Attributes):
+   - Definition: The value that appears most frequently in a dataset.
+   - One-Line Example: Identifying the user's most frequently listened genre or artist during weekday morning hours (e.g., Mode = "Lo-Fi Beats") to automatically anchor their personalized "Morning Focus" playlist.
+
+2. Mean (Arithmetic Average for Continuous Audio Metrics):
+   - Definition: The sum of all values divided by the total number of observations, providing a measure of central tendency for quantitative data.
+   - One-Line Example: Calculating the average tempo (mean Beats Per Minute / BPM = 128) and danceability index of tracks listened to during workout sessions to recommend fresh songs with a matching energy level.
+
+3. Variance / Standard Deviation (Measure of Dispersion / Spread):
+   - Definition: A measure of how much individual data points vary or deviate from their mean value.
+   - One-Line Example: Measuring the variance of acousticness and tempo across a user's recent listening history to decide whether to recommend a cohesive, tightly themed playlist (low variance) or an eclectic, multi-genre discovery mix (high variance).

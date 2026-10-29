@@ -1,0 +1,35 @@
+TASK 1: Hypotheses for Daily Time Spent on Instagram vs. YouTube
+================================================================
+
+Scenario:
+You believe that people spend more time on Instagram than on YouTube daily.
+
+----------------------------------------------------------------
+1. Definition of Variables:
+----------------------------------------------------------------
+- mu_Instagram : Population mean daily time spent on Instagram (in minutes).
+- mu_YouTube   : Population mean daily time spent on YouTube (in minutes).
+
+----------------------------------------------------------------
+2. Null Hypothesis (H0):
+----------------------------------------------------------------
+- Verbal Statement:
+  There is no significant difference in the mean daily time spent on Instagram compared to YouTube, or people spend less than or equal time on Instagram compared to YouTube daily.
+- Mathematical Notation:
+  H0: mu_Instagram <= mu_YouTube
+  (or H0: mu_Instagram - mu_YouTube <= 0)
+  (Conventionally also written as: H0: mu_Instagram = mu_YouTube)
+
+----------------------------------------------------------------
+3. Alternative Hypothesis (H1 or Ha):
+----------------------------------------------------------------
+- Verbal Statement:
+  People spend significantly more time on Instagram than on YouTube daily.
+- Mathematical Notation:
+  H1: mu_Instagram > mu_YouTube
+  (or H1: mu_Instagram - mu_YouTube > 0)
+
+----------------------------------------------------------------
+4. Type of Statistical Test:
+----------------------------------------------------------------
+This is a **One-Tailed (Right-Tailed) Two-Sample Hypothesis Test**, because the researcher's claim specifies a clear directional difference ("more time on Instagram").

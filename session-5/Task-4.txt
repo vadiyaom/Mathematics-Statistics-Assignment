@@ -1,0 +1,17 @@
+TASK 4: Spotify Music Survey Bias Identification and Explanation
+================================================================
+
+Scenario:
+A survey about general music preferences is only sent to users who recently streamed Bollywood songs on Spotify.
+
+----------------------------------------------------------------
+1. Identified Bias:
+----------------------------------------------------------------
+This introduces **SAMPLING BIAS / SELECTION BIAS** (specifically, **Undercoverage Bias**).
+
+----------------------------------------------------------------
+2. Explanation:
+----------------------------------------------------------------
+- Systematic Exclusion: By restricting the survey invitation only to users with recent Bollywood streams, listeners who primarily stream other genres (such as Western Pop, Indie, Hip-Hop, Punjabi, K-pop, Rock, or Carnatic/Hindustani classical) have zero probability of being selected.
+- Skewed Over-Representation: The resulting sample will artificially over-represent Bollywood-centric tastes, artists, and listening habits, while completely silencing the preferences of non-Bollywood audiences.
+- Lack of Generalizability: Because the sample does not reflect the true demographic and musical diversity of Spotify's overall user base, the survey results cannot be legitimately generalized to represent the preferences of the platform as a whole.

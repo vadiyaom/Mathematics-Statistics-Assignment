@@ -1,0 +1,79 @@
+TASK 3: Probability of Selecting a 'Pop' Song from 20 Spotify Tracks
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Given an array of genres from your last 20 Spotify songs (like ['pop', 'rock', 
+'pop', 'hiphop', ...]), write code to calculate the probability of randomly 
+picking a 'pop' song from your recent history.
+
+--------------------------------------------------------------------------------
+2. Mathematical Formulation:
+--------------------------------------------------------------------------------
+Let the sample space S be the multiset of all 20 songs in the recent listening history:
+- Total outcomes n(S) = 20 songs.
+- Event E = Randomly selecting a song categorized under the 'pop' genre.
+- Favorable outcomes n(E) = Total occurrences of 'pop' within the 20-track history.
+
+Formula:
+                 Number of 'pop' songs in the history       n(E)
+      P('pop') = ------------------------------------ = ------------
+                     Total songs in recent history          n(S) = 20
+
+--------------------------------------------------------------------------------
+3. Dataset (20 Recent Spotify Songs):
+--------------------------------------------------------------------------------
+```python
+spotify_genres = [
+    'pop',  'rock',   'pop',    'hiphop', 'pop', 
+    'indie', 'jazz',   'pop',    'rock',   'pop', 
+    'classical', 'edm', 'hiphop', 'pop',  'rock', 
+    'pop',  'r&b',    'pop',    'edm',    'pop'
+]
+```
+
+Counts Breakdown by Genre:
+- 'pop'       : 9 songs (45.0%)  <-- Target Genre
+- 'rock'      : 3 songs (15.0%)
+- 'hiphop'    : 2 songs (10.0%)
+- 'edm'       : 2 songs (10.0%)
+- 'indie'     : 1 song  (5.0%)
+- 'jazz'      : 1 song  (5.0%)
+- 'classical' : 1 song  (5.0%)
+- 'r&b'       : 1 song  (5.0%)
+Total Songs   : 20 songs (100.0%)
+
+--------------------------------------------------------------------------------
+4. Python Implementation (task3_spotify_genres.py):
+--------------------------------------------------------------------------------
+```python
+# Array of genres from last 20 Spotify songs
+spotify_genres = [
+    'pop', 'rock', 'pop', 'hiphop', 'pop', 
+    'indie', 'jazz', 'pop', 'rock', 'pop', 
+    'classical', 'edm', 'hiphop', 'pop', 'rock', 
+    'pop', 'r&b', 'pop', 'edm', 'pop'
+]
+
+# Calculate probability
+total_songs = len(spotify_genres)
+pop_count = spotify_genres.count('pop')
+probability_pop = pop_count / total_songs
+
+print(f"Total songs in history : {total_songs}")
+print(f"Number of 'pop' songs  : {pop_count}")
+print(f"Probability P('pop')   : {pop_count} / {total_songs} = {probability_pop:.4f} ({probability_pop * 100:.1f}%)")
+```
+
+--------------------------------------------------------------------------------
+5. Calculation Results & Conclusion:
+--------------------------------------------------------------------------------
+- n(S) = 20
+- n('pop') = 9
+- Probability P('pop') = 9 / 20 = 0.4500 (or 45.0%)
+
+Interpretation:
+If Spotify's shuffle algorithm or a user randomly selects a song uniformly at 
+random from this 20-song history, there is a **45% probability** (nearly 1 in 2) 
+that the picked song will belong to the 'pop' genre.
+

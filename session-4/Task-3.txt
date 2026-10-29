@@ -1,0 +1,27 @@
+TASK 3: Real-World Example of Right-Skewed Data
+=================================================
+
+1. Chosen Real-World App Example:
+   Zomato Food Delivery Order Bill Amounts (or YouTube Video Views)
+
+-------------------------------------------------
+2. Description of the Dataset:
+-------------------------------------------------
+The dataset consists of the final billing amounts (in Indian Rupees, Rs.) for all food delivery orders placed on Zomato across a city during a single weekend. Each data point represents the total amount paid by a customer for one order.
+
+-------------------------------------------------
+3. Why This Data is Right-Skewed:
+-------------------------------------------------
+A right-skewed (positively skewed) distribution occurs when the bulk of the observations cluster near the lower end, while a small number of unusually large values create a long tail stretching to the right. Zomato order amounts follow this pattern for three clear reasons:
+
+1. Natural Lower Bound (Hard Floor):
+   Order amounts cannot be negative or zero. Because restaurants enforce minimum order values and delivery fees, almost every order starts at a baseline of at least Rs. 100 to Rs. 150.
+
+2. Heavy Concentration at the Lower End:
+   The vast majority of app users order routine everyday meals for one or two people (e.g., a roll, a burger combo, or a biryani). Consequently, the mode and median cluster tightly between Rs. 200 and Rs. 450.
+
+3. Uncapped Upper Bound (Long Positive Tail):
+   While most orders are under Rs. 500, there is no upper limit on how much can be ordered. A small fraction of orders are placed for corporate office lunches, birthday celebrations, or multi-course family dinners, producing bills of Rs. 3,000, Rs. 7,000, or even Rs. 15,000+.
+
+4. Impact on Mean vs. Median:
+   These occasional high-value catering orders pull the arithmetic mean significantly higher (e.g., Mean ≈ Rs. 650) than what a typical customer spends (Median ≈ Rs. 320), pulling the right tail outward and creating a classic right-skewed curve.

@@ -1,0 +1,82 @@
+TASK 1: Function bayes_posterior() and Bayes' Theorem Formulation
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Write a Python function bayes_posterior(prior, likelihood, evidence) that 
+calculates and returns the posterior probability using Bayes' theorem formula 
+for given values.
+
+--------------------------------------------------------------------------------
+2. Theoretical Framework of Bayes' Theorem:
+--------------------------------------------------------------------------------
+Bayes' Theorem provides a rigorous mathematical principle for updating the 
+probability of a hypothesis (H) as new observed evidence (E) becomes available.
+
+Mathematical Formula:
+                               P(H) * P(E | H)
+                  P(H | E) = -------------------
+                                    P(E)
+
+Terminology:
+1. Prior Probability, P(H) [prior]:
+   The baseline probability of the hypothesis H before observing the evidence E.
+   It represents our initial belief or population prevalence.
+
+2. Likelihood, P(E | H) [likelihood]:
+   The conditional probability that evidence E will be observed, given that the 
+   hypothesis H is true.
+
+3. Marginal Evidence, P(E) [evidence]:
+   The total probability of observing evidence E across all possible hypotheses.
+   Calculated via the Law of Total Probability:
+   P(E) = P(H) * P(E | H) + P(not H) * P(E | not H).
+
+4. Posterior Probability, P(H | E) [posterior]:
+   The updated probability of the hypothesis H after observing and conditioning 
+   on evidence E.
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task1_bayes_posterior.py):
+--------------------------------------------------------------------------------
+```python
+def bayes_posterior(prior: float, likelihood: float, evidence: float) -> float:
+    """
+    Calculates posterior probability P(H | E) using Bayes' Theorem.
+    
+    Formula:
+        P(H | E) = (prior * likelihood) / evidence
+    """
+    if not (0.0 <= prior <= 1.0):
+        raise ValueError("Prior must be between 0.0 and 1.0.")
+    if not (0.0 <= likelihood <= 1.0):
+        raise ValueError("Likelihood must be between 0.0 and 1.0.")
+    if not (0.0 < evidence <= 1.0):
+        raise ValueError("Evidence must be strictly > 0.0 and <= 1.0.")
+        
+    posterior = (prior * likelihood) / evidence
+    return min(posterior, 1.0)
+```
+
+--------------------------------------------------------------------------------
+4. Numerical Examples & Verification:
+--------------------------------------------------------------------------------
+Example 1: Medical Diagnostic Test
+- Prior probability of rare condition P(H) = 0.01 (1%)
+- Test Sensitivity / Likelihood P(E | H)   = 0.95 (95%)
+- Total positive tests in population P(E)  = 0.057 (5.7%)
+- Posterior Probability:
+  P(H | E) = (0.01 * 0.95) / 0.057 = 0.0095 / 0.057 = 0.1667 (16.67%)
+
+Example 2: Fair vs. Biased Coin Identification
+- Prior belief of biased coin P(H)        = 0.50 (50%)
+- Likelihood of 3 heads in a row P(E | H) = 0.875 (87.5%)
+- Total evidence P(E)                      = 0.5625 (56.25%)
+- Posterior Probability:
+  P(H | E) = (0.50 * 0.875) / 0.5625 = 0.4375 / 0.5625 = 0.7778 (77.78%)
+
+Key Takeaway:
+Bayes' Theorem provides the mathematical backbone for probabilistic reasoning, 
+machine learning classification (Naive Bayes), medical diagnosis, and automated 
+spam filtering.
+

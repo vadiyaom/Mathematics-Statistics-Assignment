@@ -1,0 +1,76 @@
+TASK 2: 3x3 Swiggy Food Ratings Matrix & Column Slicing
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Represent a 3x3 matrix in Python to store the ratings (1-5) given by 3 friends 
+to 3 different food items on Swiggy. Print the matrix and display the rating 
+each friend gave to the second food item.
+
+--------------------------------------------------------------------------------
+2. Mathematical Representation of the Matrix:
+--------------------------------------------------------------------------------
+Let R be a 3x3 Matrix:
+           Col 0: Biryani    Col 1: Butter Chicken    Col 2: Garlic Naan
+Row 0: Rohan    [     5                  4                    3         ]
+Row 1: Priya    [     4                  5                    2         ]
+Row 2: Amit     [     3                  4                    5         ]
+
+Matrix Dimensions: 3 rows x 3 columns (M = 3, N = 3)
+
+Indexing in Python:
+- In Python, indexing is 0-based:
+  * First food item  = Column Index 0
+  * Second food item = Column Index 1  <-- Target Column
+  * Third food item  = Column Index 2
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task2_swiggy_ratings_matrix.py):
+--------------------------------------------------------------------------------
+```python
+import numpy as np
+
+# 1. Represent 3x3 Matrix in Python (Nested List)
+ratings = [
+    [5, 4, 3],  # Friend 1 (Rohan)
+    [4, 5, 2],  # Friend 2 (Priya)
+    [3, 4, 5]   # Friend 3 (Amit)
+]
+
+# Convert to NumPy array
+ratings_matrix = np.array(ratings)
+
+print("3x3 Food Ratings Matrix:")
+print(ratings_matrix)
+
+# 2. Extract ratings for the SECOND food item (Column Index 1)
+print("\nRatings for Second Food Item (Butter Chicken):")
+friends = ["Friend 1 (Rohan)", "Friend 2 (Priya)", "Friend 3 (Amit)"]
+
+for i, friend in enumerate(friends):
+    print(f"{friend}: {ratings[i][1]} / 5 stars")
+
+# Slicing the second column in NumPy:
+second_item_column = ratings_matrix[:, 1]
+print(f"\nExtracted Column Vector: {list(second_item_column)}")
+```
+
+--------------------------------------------------------------------------------
+4. Ratings Given to the Second Food Item (Butter Chicken):
+--------------------------------------------------------------------------------
+- Friend 1 (Rohan) : Row 0, Column 1 ==> ratings[0][1] = **4 / 5 stars**
+- Friend 2 (Priya) : Row 1, Column 1 ==> ratings[1][1] = **5 / 5 stars**
+- Friend 3 (Amit)  : Row 2, Column 1 ==> ratings[2][1] = **4 / 5 stars**
+
+Summary Vector for Second Food Item:
+      ratings[:, 1] = [4, 5, 4]
+      Average Rating = (4 + 5 + 4) / 3 = 4.33 / 5.0 stars
+
+--------------------------------------------------------------------------------
+5. Key Takeaways:
+--------------------------------------------------------------------------------
+- Matrices in Python can be represented naturally using nested lists (`[[...], [...]]`) 
+  or NumPy 2D arrays (`np.array(...)`).
+- To access specific features/items across all observations, column indexing and 
+  slicing (`matrix[:, col_idx]`) allows fast, vector-based data extraction.
+

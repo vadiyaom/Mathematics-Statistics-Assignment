@@ -1,0 +1,66 @@
+TASK 1: Hand Calculation of Variance for Daily Step Counts
+=============================================================
+
+Dataset (Daily Step Counts for 1 Week):
+[4500, 7000, 5000, 8000, 4000, 9000, 6000]
+
+Number of days (n) = 7
+
+-------------------------------------------------------------
+STEP 1: Calculate the Mean (Average Step Count)
+-------------------------------------------------------------
+Formula:
+   Mean (x_bar) = sum(x_i) / n 
+
+Calculation:
+   sum(x_i) = 4500 + 7000 + 5000 + 8000 + 4000 + 9000 + 6000
+            = 43,500 steps
+
+   Mean (x_bar) = 43,500 / 7
+                = 6,214.29 steps
+
+-------------------------------------------------------------
+STEP 2: Calculate Deviations from Mean and Squared Deviations
+-------------------------------------------------------------
+For each data point x_i:
+   Deviation         = (x_i - x_bar)
+   Squared Deviation = (x_i - x_bar)^2
+
+| Day | Steps (x_i) | Deviation (x_i - 6214.29) | Squared Deviation (x_i - x_bar)^2 |
+|:---:|:-----------:|:-------------------------:|:----------------------------------:|
+|  1  |    4500     |         -1714.29          |            2,938,789.79            |
+|  2  |    7000     |          +785.71          |              617,340.20            |
+|  3  |    5000     |         -1214.29          |            1,474,499.79            |
+|  4  |    8000     |         +1785.71          |            3,188,760.20            |
+|  5  |    4000     |         -2214.29          |            4,903,080.20            |
+|  6  |    9000     |         +2785.71          |            7,760,179.80            |
+|  7  |    6000     |          -214.29          |               45,920.20            |
+
+Sum of Squared Deviations:
+   sum( (x_i - x_bar)^2 ) = 20,928,571.43
+
+-------------------------------------------------------------
+STEP 3: Calculate the Variance
+-------------------------------------------------------------
+
+A. Population Variance (sigma^2) [Dividing by N = 7]:
+   Formula: sigma^2 = sum( (x_i - mu)^2 ) / N
+   Calculation:
+      sigma^2 = 20,928,571.43 / 7
+              = 2,989,795.92 steps^2
+   Population Standard Deviation (sigma):
+      sigma = sqrt(2,989,795.92) = 1,729.10 steps
+
+B. Sample Variance (s^2) [Dividing by (n - 1) = 6]:
+   Formula: s^2 = sum( (x_i - x_bar)^2 ) / (n - 1)
+   Calculation:
+      s^2 = 20,928,571.43 / (7 - 1)
+          = 20,928,571.43 / 6
+          = 3,488,095.24 steps^2
+   Sample Standard Deviation (s):
+      s = sqrt(3,488,095.24) = 1,867.64 steps
+
+-------------------------------------------------------------
+Final Summary:
+- Population Variance (sigma^2) = 2,989,795.92
+- Sample Variance (s^2)         = 3,488,095.24

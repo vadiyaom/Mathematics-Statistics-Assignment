@@ -1,0 +1,42 @@
+TASK 3: Zomato Daily Spending Consistency Analysis
+=====================================================
+
+Given Data:
+- Friend A: [200, 200, 200, 200, 200]
+- Friend B: [100, 300, 150, 400, 50]
+- Number of days (n) = 5
+
+-----------------------------------------------------
+1. Calculations for Friend A:
+-----------------------------------------------------
+- Mean (x_bar_A) = (200 + 200 + 200 + 200 + 200) / 5 = 1000 / 5 = Rs. 200.00
+- Deviations (x_i - 200): [0, 0, 0, 0, 0]
+- Squared Deviations: [0, 0, 0, 0, 0]
+- Sum of Squared Deviations = 0
+
+- Sample Variance (s^2) = 0 / (5 - 1) = 0
+- Sample Standard Deviation (s) = sqrt(0) = Rs. 0.00
+- Population Standard Deviation (sigma) = sqrt(0) = Rs. 0.00
+
+-----------------------------------------------------
+2. Calculations for Friend B:
+-----------------------------------------------------
+- Mean (x_bar_B) = (100 + 300 + 150 + 400 + 50) / 5 = 1000 / 5 = Rs. 200.00
+- Deviations (x_i - 200):
+    100 - 200 = -100  --> (-100)^2 = 10,000
+    300 - 200 = +100  --> (100)^2  = 10,000
+    150 - 200 =  -50  --> (-50)^2  =  2,500
+    400 - 200 = +200  --> (200)^2  = 40,000
+     50 - 200 = -150  --> (-150)^2 = 22,500
+- Sum of Squared Deviations = 10,000 + 10,000 + 2,500 + 40,000 + 22,500 = 85,000
+
+- Sample Variance (s^2) = 85,000 / (5 - 1) = 85,000 / 4 = 21,250
+- Sample Standard Deviation (s) = sqrt(21,250) = Rs. 145.77
+- Population Variance (sigma^2) = 85,000 / 5 = 17,000
+- Population Standard Deviation (sigma) = sqrt(17,000) = Rs. 130.38
+
+-----------------------------------------------------
+3. Consistency Explanation & Comparison (2-3 lines):
+-----------------------------------------------------
+Friend A has significantly more consistent spending because their standard deviation is Rs. 0.00, meaning their spending has zero variability and remains identical to their average every single day. 
+In contrast, Friend B exhibits high spending dispersion with a standard deviation of Rs. 145.77 (or Rs. 130.38 population SD), fluctuating unpredictably between Rs. 50 and Rs. 400 despite both friends having the exact same Rs. 200 average.

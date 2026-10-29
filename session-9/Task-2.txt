@@ -1,0 +1,95 @@
+TASK 2: Fitness Tracker Step Counts & Central Tendency in Normal Distributions
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Given an array of 20 daily step counts from your fitness tracker app, calculate 
+the mean, median, and mode, and check if they are approximately equal as 
+expected in a normal distribution.
+
+Hint: Use numpy.mean(), numpy.median(), and scipy.stats.mode().
+
+--------------------------------------------------------------------------------
+2. Theoretical Framework: Symmetry in a Normal Distribution
+--------------------------------------------------------------------------------
+In an ideal continuous Normal Distribution N(mu, sigma^2):
+1. Mean   : The arithmetic center of the distribution (sum(x) / N).
+2. Median : The 50th percentile dividing the data into two equal halves.
+3. Mode   : The point of maximum probability density (highest peak).
+
+Mathematical Identity for Normal Distributions:
+                      Mean = Median = Mode
+
+In real-world empirical samples:
+Due to minor random sampling fluctuations and measurement granularity, exact 
+mathematical equality is rarely observed. However, for data that approximates 
+a normal distribution, the three metrics must be **approximately equal**:
+                      Mean approx Median approx Mode
+
+If the three metrics diverge substantially:
+- Mean > Median > Mode  ==> Right-skewed (positively skewed) distribution.
+- Mode > Median > Mean  ==> Left-skewed (negatively skewed) distribution.
+
+--------------------------------------------------------------------------------
+3. Dataset (20-Day Fitness Tracker Step Counts):
+--------------------------------------------------------------------------------
+Daily steps recorded over 20 consecutive days:
+[6800, 7200, 7400, 7600, 7800, 7900, 8000, 8000, 8000, 8000,
+ 8100, 8100, 8200, 8200, 8400, 8500, 8600, 8800, 9000, 9200]
+
+- Sample Size (N) = 20 days
+
+--------------------------------------------------------------------------------
+4. Python Implementation (task2_step_counts_symmetry.py):
+--------------------------------------------------------------------------------
+```python
+import numpy as np
+from scipy import stats
+
+# 1. Input step counts array
+daily_steps = np.array([
+    6800, 7200, 7400, 7600, 7800, 7900, 8000, 8000, 8000, 8000,
+    8100, 8100, 8200, 8200, 8400, 8500, 8600, 8800, 9000, 9200
+])
+
+# 2. Compute Mean, Median, and Mode
+mean_steps   = np.mean(daily_steps)
+median_steps = np.median(daily_steps)
+mode_steps   = stats.mode(daily_steps).mode
+
+print(f"Mean   : {mean_steps:.2f} steps")
+print(f"Median : {median_steps:.2f} steps")
+print(f"Mode   : {mode_steps:.2f} steps")
+
+# Check if approximately equal (within 5% tolerance)
+diff_mean_median = abs(mean_steps - median_steps)
+diff_mean_mode   = abs(mean_steps - mode_steps)
+
+print(f"|Mean - Median| = {diff_mean_median:.2f} ({diff_mean_median / mean_steps * 100:.2f}%)")
+print(f"|Mean - Mode|   = {diff_mean_mode:.2f} ({diff_mean_mode / mean_steps * 100:.2f}%)")
+```
+
+--------------------------------------------------------------------------------
+5. Calculation Results & Pairwise Comparison:
+--------------------------------------------------------------------------------
+- Mean (numpy.mean())    : 8,090.00 steps
+- Median (numpy.median()): 8,050.00 steps
+- Mode (stats.mode())    : 8,000.00 steps (frequency = 4 days)
+- Standard Deviation (s) : 582.10 steps
+
+Relative Differences:
+- |Mean - Median| = |8090 - 8050| = 40.00 steps (0.49% difference)
+- |Mean - Mode|   = |8090 - 8000| = 90.00 steps (1.11% difference)
+- |Median - Mode| = |8050 - 8000| = 50.00 steps (0.62% difference)
+
+--------------------------------------------------------------------------------
+6. Conclusion & Verdict:
+--------------------------------------------------------------------------------
+**YES, the Mean (8,090), Median (8,050), and Mode (8,000) are approximately equal.**
+
+- The maximum variation among the three metrics is only 1.11% (well below the 
+  conventional statistical divergence threshold of 5%).
+- This tight clustering around ~8,050 steps confirms that the daily step counts 
+  exhibit strong central tendency and bell-shaped symmetry, demonstrating that the 
+  data aligns with the fundamental characteristics of a normal distribution.
+

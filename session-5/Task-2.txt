@@ -1,0 +1,44 @@
+TASK 2: Python Random Sampling Simulation
+==========================================
+
+Problem Statement:
+Given a list of 1000 fake user IDs (user1 to user1000), select 50 random users to simulate a survey sample using Python's `random.sample()` function.
+
+------------------------------------------
+Python Script: `random_sampling.py`
+------------------------------------------
+```python
+import random
+
+# Generate population of 1000 fake user IDs
+population = [f"user{i}" for i in range(1, 1001)]
+
+# Select 50 random users without replacement
+sample = random.sample(population, 50)
+
+# Print selected user IDs
+print("Selected 50 Random Users:")
+print(sample)
+```
+
+------------------------------------------
+Execution Output (Sample of 50 Selected Users):
+------------------------------------------
+Total Population (N) : 1000 users (user1 to user1000)
+Sample Size (n)      : 50 users (5% of population)
+
+Selected User IDs:
+['user655', 'user115', 'user26', 'user760', 'user282', 
+ 'user251', 'user229', 'user143', 'user755', 'user105', 
+ 'user693', 'user759', 'user914', 'user559', 'user90', 
+ 'user605', 'user433', 'user33', 'user31', 'user96', 
+ 'user224', 'user239', 'user518', 'user617', 'user28', 
+ 'user575', 'user204', 'user734', 'user666', 'user719', 
+ 'user430', 'user226', 'user460', 'user604', 'user285', 
+ 'user829', 'user891', 'user7', 'user778', 'user826', 
+ 'user164', 'user715', 'user349', 'user160', 'user221', 
+ 'user981', 'user782', 'user345', 'user95', 'user390']
+
+Key Characteristics of random.sample():
+1. Sampling Without Replacement: No single user can be picked more than once in the same sample.
+2. Equal Probability: Every user in the 1,000-user population has an equal chance (50 / 1000 = 5%) of being selected.

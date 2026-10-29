@@ -1,0 +1,39 @@
+TASK 2: Instagram Influencer Follower Counts Skewness Analysis
+===============================================================
+
+1. Given Dataset (Follower counts in thousands):
+   [5, 7, 8, 8, 9, 10, 12, 15, 95]
+   Number of influencers (n) = 9
+
+---------------------------------------------------------------
+2. Mean Calculation:
+---------------------------------------------------------------
+   Formula: Mean = sum(x_i) / n
+   Sum = 5 + 7 + 8 + 8 + 9 + 10 + 12 + 15 + 95 = 169
+   Mean = 169 / 9
+        = 18.78 (in thousands, i.e., 18,778 followers)
+
+---------------------------------------------------------------
+3. Median Calculation:
+---------------------------------------------------------------
+   The dataset is already arranged in ascending order:
+   [5, 7, 8, 8, 9, 10, 12, 15, 95]
+   Since n = 9 (odd), the median is the middle observation:
+   Position = (9 + 1) / 2 = 5th observation
+   Median = 9 (in thousands, i.e., 9,000 followers)
+
+---------------------------------------------------------------
+4. Comparison (Which is Higher?):
+---------------------------------------------------------------
+   - Mean   = 18.78k
+   - Median = 9.00k
+   
+   Result: The **MEAN is significantly HIGHER than the MEDIAN** (18.78 > 9.00).
+
+---------------------------------------------------------------
+5. What This Tells You About the Skewness:
+---------------------------------------------------------------
+- Direction of Skew: The data is **RIGHT-SKEWED (Positively Skewed)**.
+- Explanation: 
+  The single celebrity influencer with 95k followers acts as a huge positive outlier. This outlier pulls the arithmetic mean up to 18.78k, even though 8 out of the 9 influencers (nearly 90% of the sample) have 15k followers or fewer. 
+  Because the mean is strongly pulled in the positive direction away from the median (Mean > Median), the distribution stretches to the right.

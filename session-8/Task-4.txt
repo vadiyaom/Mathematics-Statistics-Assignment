@@ -1,0 +1,102 @@
+TASK 4: Probability of a User Ordering Both Food and Dessert on Zomato
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Write a function that, given two arrays — one for users who ordered food on 
+Zomato and one for users who ordered dessert — calculates the probability that 
+a randomly selected user ordered both food and dessert (i.e., intersection 
+over total unique users).
+
+--------------------------------------------------------------------------------
+2. Mathematical Set Theory Formulation:
+--------------------------------------------------------------------------------
+Let:
+- Set A = Set of unique users who placed a Food order
+- Set B = Set of unique users who placed a Dessert order
+
+Key Set Operations:
+1. Intersection (A INTERSECT B):
+   Users who ordered BOTH Food and Dessert simultaneously:
+   n(Both) = |A INTERSECT B|
+
+2. Union (A UNION B):
+   Total distinct unique users who engaged in at least one ordering action:
+   n(Total Unique Users) = |A UNION B| = |A| + |B| - |A INTERSECT B|
+
+3. Probability Formula (Intersection over Union / Jaccard Metric):
+   If a user is picked uniformly at random from the pool of all unique users 
+   who placed an order:
+
+                               |A INTERSECT B|
+         P(Food and Dessert) = -----------------
+                                 |A UNION B|
+
+--------------------------------------------------------------------------------
+3. Sample Customer Dataset:
+--------------------------------------------------------------------------------
+- Food Orders Array (8 users):
+  ['user_101', 'user_102', 'user_103', 'user_104', 
+   'user_105', 'user_106', 'user_107', 'user_108']
+
+- Dessert Orders Array (5 users):
+  ['user_103', 'user_104', 'user_107', 'user_109', 'user_110']
+
+Set Analysis:
+- Intersection (Both) : {'user_103', 'user_104', 'user_107'}  --> 3 users
+- Union (Total Unique): {'user_101', 'user_102', 'user_103', 'user_104', 
+                         'user_105', 'user_106', 'user_107', 'user_108', 
+                         'user_109', 'user_110'}               --> 10 users
+
+Calculation:
+- P(Both) = 3 / 10 = 0.3000 (30.00%)
+
+--------------------------------------------------------------------------------
+4. Python Implementation (task4_zomato_dessert.py):
+--------------------------------------------------------------------------------
+```python
+def prob_ordered_both(food_users: list, dessert_users: list) -> float:
+    """
+    Calculates probability that a randomly selected user ordered both 
+    food and dessert: |Food INTERSECT Dessert| / |Food UNION Dessert|
+    """
+    set_food = set(food_users)
+    set_dessert = set(dessert_users)
+    
+    # Total unique users (Union)
+    total_unique_users = set_food.union(set_dessert)
+    
+    if len(total_unique_users) == 0:
+        raise ValueError("Cannot calculate probability for empty user sets.")
+    
+    # Users who ordered both (Intersection)
+    both_users = set_food.intersection(set_dessert)
+    
+    # Probability
+    return len(both_users) / len(total_unique_users)
+
+# Example usage:
+food = ["u101", "u102", "u103", "u104", "u105", "u106", "u107", "u108"]
+dessert = ["u103", "u104", "u107", "u109", "u110"]
+
+prob = prob_ordered_both(food, dessert)
+print(f"Probability of ordering both: {prob:.4f} ({prob * 100:.2f}%)")
+```
+
+--------------------------------------------------------------------------------
+5. User Segmentation Breakdown:
+--------------------------------------------------------------------------------
+| User Segment                  | User IDs                                      | Count | Percentage |
+|:------------------------------|:----------------------------------------------|:-----:|:----------:|
+| 1. Food Only Users            | 'user_101', 'user_102', 'user_105', 'user_106', 'user_108' | 5 | 50.0% |
+| 2. Dessert Only Users         | 'user_109', 'user_110'                        | 2     | 20.0%      |
+| 3. BOTH Food & Dessert        | 'user_103', 'user_104', 'user_107'            | 3     | 30.0%      |
+| Total Active Unique Users     | All 10 unique customers                      | 10    | 100.0%     |
+
+Business Value for Zomato:
+- This metric represents cross-category basket penetration. A probability of 
+  30% indicates that nearly 1 in 3 active customers bundles sweets with their meals.
+- Product teams can use this to optimize the checkout journey (e.g., prompt 
+  "Add a sweet dessert for Rs. 49?" right before payment) to drive up average 
+  order value (AOV).
+

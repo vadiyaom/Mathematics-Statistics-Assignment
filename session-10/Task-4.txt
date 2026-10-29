@@ -1,0 +1,115 @@
+TASK 4: ChatGPT / Copilot Prompt & Code for Instagram Bot Detection (Bayes' Theorem)
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Use ChatGPT or Copilot to generate a real-world Bayes' theorem example related 
+to any app you use (Instagram, Zomato, Flipkart, etc.), then write code to solve 
+it and submit both the prompt you used and your code.
+
+--------------------------------------------------------------------------------
+2. Prompt Submitted to ChatGPT / Copilot:
+--------------------------------------------------------------------------------
+"Generate a realistic real-world Bayes' Theorem word problem related to Instagram. 
+Specifically, set up a scenario where Instagram's Trust & Safety engineering team 
+uses Bayes' Theorem to detect Bot/Spam accounts based on the profile feature: 
+'Account has a Default Profile Picture and Zero Posts'. 
+Provide realistic prior probabilities, likelihoods, numerical values, and explain 
+the step-by-step Bayes' theorem solution with Python code."
+
+--------------------------------------------------------------------------------
+3. ChatGPT / Copilot Generated Scenario:
+--------------------------------------------------------------------------------
+App: Instagram
+Domain: Trust & Safety / Automated Bot Account Moderation
+
+Scenario Context:
+On Instagram, automated bots create millions of fake accounts to post spam links, 
+scrape user bios, and sell artificial follower counts. To protect genuine creators 
+without harassing real human users, Instagram uses Bayesian inference to update 
+risk scores based on profile signals.
+
+Given Parameters:
+1. Prior Probability:
+   - On Instagram, approximately 15% of all newly registered accounts are bots:
+     P(Bot) = 0.15 (15.0%)
+   - Legitimate human accounts make up the remaining 85%:
+     P(Human) = 0.85 (85.0%)
+
+2. Evidence Signal (E):
+   The profile has a "Default Avatar Picture and Zero Posts".
+
+3. Likelihoods:
+   - 75% of Bot accounts have default avatars and zero posts (they are automated scripts):
+     P(E | Bot) = 0.75 (75.0%)
+   - Only 5% of legitimate human users have default avatars and zero posts:
+     P(E | Human) = 0.05 (5.0%)
+
+Question:
+If an incoming newly registered account has a default avatar and zero posts, 
+what is the probability that this account is an automated BOT?
+
+--------------------------------------------------------------------------------
+4. Mathematical Derivation:
+--------------------------------------------------------------------------------
+Step 1: Calculate Total Marginal Evidence P(E)
+Using the Law of Total Probability:
+      P(E) = P(Bot) * P(E | Bot) + P(Human) * P(E | Human)
+           = (0.15 * 0.75) + (0.85 * 0.05)
+           = 0.1125 + 0.0425
+           = 0.1550 (or 15.50% of all accounts exhibit this signal)
+
+Step 2: Calculate Posterior Probability P(Bot | E)
+Using Bayes' Theorem:
+                           P(Bot) * P(E | Bot)
+      P(Bot | E) = ---------------------------------
+                                P(E)
+
+                               0.15 * 0.75
+                 = ---------------------------------
+                                 0.1550
+
+                                0.1125
+                 = ---------------------------------
+                                 0.1550
+
+                 approx 0.72581 (or 72.58%)
+
+--------------------------------------------------------------------------------
+5. Python Code (task4_instagram_bayes.py):
+--------------------------------------------------------------------------------
+```python
+# 1. Priors
+prior_bot   = 0.15
+prior_human = 0.85
+
+# 2. Likelihoods
+likelihood_given_bot   = 0.75  # P(Default & 0 Posts | Bot)
+likelihood_given_human = 0.05  # P(Default & 0 Posts | Human)
+
+# 3. Total Evidence via Law of Total Probability
+evidence = (prior_bot * likelihood_given_bot) + (prior_human * likelihood_given_human)
+
+# 4. Posterior Probability via Bayes' Theorem
+posterior_bot = (prior_bot * likelihood_given_bot) / evidence
+
+print(f"Total Evidence P(Feature)          : {evidence:.4f} ({evidence * 100:.2f}%)")
+print(f"Posterior P(Bot | Default & 0 Posts): {posterior_bot:.5f} ({posterior_bot * 100:.2f}%)")
+
+# Automated security rule
+if posterior_bot >= 0.70:
+    print("Action: Trigger SMS / Video Selfie CAPTCHA Challenge!")
+```
+
+--------------------------------------------------------------------------------
+6. Engineering Takeaway & Real-World Decision:
+--------------------------------------------------------------------------------
+- Prior Belief: Before inspecting the profile, any new account had only a 15% 
+  baseline probability of being a bot.
+- Posterior Belief: After observing the "Default Avatar + 0 Posts" feature, 
+  the probability surges to **72.58%** (a nearly 5x risk increase).
+- Policy Action:
+  Because 72.58% exceeds the high-risk moderation threshold (70%), Instagram's 
+  automated security system flags the account, restricts outbound DMs, and prompts 
+  the user to solve a CAPTCHA or verify a phone number before proceeding.
+

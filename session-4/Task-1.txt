@@ -1,0 +1,45 @@
+TASK 1: Swiggy Daily Orders Distribution & Skewness Analysis
+=============================================================
+
+1. Given Dataset (10 Days of Swiggy Orders):
+   [12, 15, 17, 14, 13, 16, 200, 18, 14, 15]
+
+-------------------------------------------------------------
+2. Statistical Calculations:
+-------------------------------------------------------------
+- Total Orders = 12 + 15 + 17 + 14 + 13 + 16 + 200 + 18 + 14 + 15 = 334
+- Number of Days (n) = 10
+- Mean (Average) = 334 / 10 = 33.4 orders
+
+Sorted Dataset:
+   [12, 13, 14, 14, 15, 15, 16, 17, 18, 200]
+- Median (Middle value) = (15 + 15) / 2 = 15.0 orders
+- Mode (Most frequent)  = 14 and 15 (each appears 2 times)
+
+Relationship: Mean (33.4) > Median (15.0)
+
+-------------------------------------------------------------
+3. Rough Distribution Graph (ASCII Dot / Frequency Plot):
+-------------------------------------------------------------
+Order Range   Frequency   Graph
+ 10 -  20       9         * * * * * * * * *  (Peak / Bulk of data)
+ 20 -  50       0         
+ 50 - 100       0         
+100 - 150       0         
+150 - 200       1         *                  (Extreme Outlier / Long Tail)
+
+Visual Plot File:
+   A high-resolution chart has also been generated and saved as:
+   `swiggy_orders_plot.png`
+
+-------------------------------------------------------------
+4. Classification:
+-------------------------------------------------------------
+The data distribution is **RIGHT-SKEWED (Positively Skewed)**.
+
+-------------------------------------------------------------
+5. Reasoning Based on the Shape:
+-------------------------------------------------------------
+1. Visual Tail: 9 out of 10 data points are concentrated heavily on the left side between 12 and 18 orders. A single extreme outlier (200 orders on Day 7) stretches a long, thin tail far to the right.
+2. Mathematical Pull: Because the arithmetic mean incorporates all values, the extreme outlier pulls the mean (33.4) significantly to the right of the median (15.0).
+3. Whenever Mean > Median and the tail extends toward higher positive values, the distribution is classified as right-skewed.

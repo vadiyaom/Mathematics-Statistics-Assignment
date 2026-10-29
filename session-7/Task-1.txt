@@ -1,0 +1,97 @@
+TASK 1: Instagram Daily Hours vs. Posts Made Scatter Plot & Correlation
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Create two Python lists:
+- One representing the number of hours spent on Instagram each day for a week (7 days).
+- Another representing the number of posts made each day.
+Plot these as a scatter plot using matplotlib and visually describe whether the 
+relationship looks like a positive, negative, or zero correlation.
+
+--------------------------------------------------------------------------------
+2. Dataset (1 Week / 7 Days of Activity):
+--------------------------------------------------------------------------------
+| Day of Week | Daily Time on Instagram (Hours) [X] | Daily Posts Made (Count) [Y] |
+|:------------|:-----------------------------------:|:----------------------------:|
+| Monday      |                 1.0                 |              0               |
+| Tuesday     |                 1.5                 |              1               |
+| Wednesday   |                 2.0                 |              1               |
+| Thursday    |                 2.5                 |              2               |
+| Friday      |                 3.0                 |              2               |
+| Saturday    |                 4.0                 |              4               |
+| Sunday      |                 4.5                 |              3               |
+
+- Sample size (n) = 7 days
+- X (Independent Variable) = Daily hours spent on Instagram
+- Y (Dependent Variable)   = Daily posts created and published
+
+--------------------------------------------------------------------------------
+3. Python Implementation (task1_instagram.py):
+--------------------------------------------------------------------------------
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Define the two lists
+instagram_hours = [1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 4.5]
+posts_made      = [0,   1,   1,   2,   2,   4,   3  ]
+
+# 2. Calculate Pearson correlation coefficient using numpy
+corr_matrix = np.corrcoef(instagram_hours, posts_made)
+r = corr_matrix[0, 1]
+print(f"Correlation Coefficient (r): {r:.4f}")
+
+# 3. Create Scatter Plot
+plt.figure(figsize=(8, 5))
+plt.scatter(instagram_hours, posts_made, color="#833AB4", s=100, label="Daily Activity")
+
+# Add linear trendline
+slope, intercept = np.polyfit(instagram_hours, posts_made, 1)
+plt.plot(instagram_hours, slope * np.array(instagram_hours) + intercept, 
+         color="#E1306C", linestyle="--", label="Trendline")
+
+plt.title("Instagram Daily Hours vs. Posts Made (1 Week)")
+plt.xlabel("Time Spent on Instagram (Hours/Day)")
+plt.ylabel("Number of Posts Made (Posts/Day)")
+plt.grid(True, linestyle=":", alpha=0.6)
+plt.legend()
+plt.savefig("instagram_scatter_plot.png")
+plt.show()
+```
+
+--------------------------------------------------------------------------------
+4. Statistical Metrics:
+--------------------------------------------------------------------------------
+- Mean Daily Hours Spent (X_bar) = 2.64 hours
+- Mean Daily Posts Made (Y_bar)  = 1.86 posts
+- Pearson Correlation Coefficient (r) = +0.9321
+
+--------------------------------------------------------------------------------
+5. Visual Description & Interpretation:
+--------------------------------------------------------------------------------
+When examining the generated scatter plot (`instagram_scatter_plot.png`):
+
+1. Direction and Trajectory of Points:
+   The plotted points clearly form an upward-sloping trajectory moving from the 
+   lower-left quadrant (low hours, few/no posts) up toward the upper-right 
+   quadrant (high hours, many posts).
+
+2. Positive Relationship (Co-movement):
+   As the value on the horizontal axis (Instagram usage time) increases from 
+   1.0 hour to 4.5 hours, the value on the vertical axis (number of posts uploaded) 
+   consistently exhibits an upward progression from 0 to 4 posts.
+
+3. Visual Classification:
+   The visual relationship represents a **STRONG POSITIVE CORRELATION**.
+   - It is NOT a negative correlation (which would slant downward from top-left 
+     to bottom-right).
+   - It is NOT a zero correlation (which would show a scattered, diffuse cloud 
+     or completely flat horizontal pattern with no discernible direction).
+
+4. Real-World Intuition:
+   Active content creators who spend more time editing reels, curating photos, 
+   and engaging with followers naturally allocate more time to the app on days 
+   they prepare and upload posts. Thus, time invested positively aligns with 
+   publishing activity.
+

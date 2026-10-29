@@ -1,0 +1,30 @@
+TASK 3: Improving an App Feature Using Statistics
+=================================================
+
+Chosen Feature:
+Restaurant Rating System on Zomato (User Review & Star Rating System)
+
+Background & Current Shortcoming:
+Many food delivery apps calculate a simple arithmetic mean of all ratings submitted for a restaurant. This simple average leads to notable pitfalls:
+1. Low Sample Size Distortion: A newly listed restaurant with just one 5-star review gets a 5.0 rating, artificially ranking higher than an established restaurant with a 4.7 rating across 3,000 verified orders.
+2. Inability to Capture Recency: An old review from two years ago is weighted equally with a review from yesterday, failing to capture recent drops or improvements in chef quality, kitchen hygiene, or delivery speed.
+3. Susceptibility to Outliers & Review-Bombing: Coordinated 1-star attacks or artificial 5-star fake reviews heavily skew simple averages.
+
+How Statistics Can Improve This Feature for Users:
+
+1. Bayesian Weighted Average (Empirical Bayes Estimation):
+   Instead of displaying raw arithmetic averages, the platform can use a Bayesian shrinkage formula:
+      Weighted Rating = (v / (v + m)) * R + (m / (v + m)) * C
+   where R is the restaurant's average rating, v is the number of reviews, m is a minimum threshold of reviews, and C is the platform-wide mean rating.
+   This pulls low-volume restaurants toward the overall average until they gather enough statistically credible reviews, preventing users from being misled by a 5.0 score based on 1 or 2 reviews.
+
+2. Time-Decay Weighting (Exponential Moving Average):
+   Statistical time-series models can weight reviews inversely to their age:
+      Weight = e^(-lambda * t)
+   where t is the age of the review. Recent ratings carry greater weight, providing users with a rating that reflects the restaurant's current standards rather than past glory.
+
+3. Outlier Filtering & Robust Central Tendency:
+   Statistical anomaly detection (such as the Interquartile Range / IQR rule or trimmed mean) can automatically detect and neutralize suspicious spikes in extreme 1-star or 5-star ratings (e.g., promotional campaigns or coordinated review-bombing), ensuring a tamper-resistant score.
+
+4. Wilson Score Interval / Confidence Interval Ranking:
+   Instead of sorting restaurants strictly by average score, ranking by the lower bound of a 95% Wilson confidence interval ensures users see restaurants that are statistically proven to satisfy diners with high confidence.

@@ -1,0 +1,57 @@
+TASK 4: Real-World Scenario Modeling with Normal Distribution
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Pick any real-world scenario (like delivery times for Zomato orders or playlist 
+song durations on Spotify) and explain in 3-4 lines why the normal distribution 
+might be a good fit for modeling this data.
+
+--------------------------------------------------------------------------------
+2. Chosen Real-World Scenario:
+--------------------------------------------------------------------------------
+Scenario: Delivery times for Zomato food orders (in minutes).
+
+--------------------------------------------------------------------------------
+3. Core 3-4 Line Explanation:
+--------------------------------------------------------------------------------
+Food delivery times on Zomato are well-modeled by a normal distribution because 
+the total delivery duration is the composite sum of multiple independent random 
+factors—including restaurant kitchen cooking time, packaging, rider dispatch, 
+traffic signal stops, and customer hand-off. By the Central Limit Theorem, the sum 
+of numerous independent random variables naturally forms a symmetric, unimodal 
+bell curve centered around a typical average (e.g., 32 minutes). Extreme deviations 
+from this mean—such as an order arriving exceptionally fast in under 12 minutes 
+or suffering severe delays beyond 52 minutes—occur symmetrically with rapidly 
+diminishing probability in both tails.
+
+--------------------------------------------------------------------------------
+4. Detailed Underlying Statistical Reasons:
+--------------------------------------------------------------------------------
+1. Central Limit Theorem (Sum of Independent Additive Components):
+   Total Time = Cooking Time + Packing Time + Rider Wait Time + Transit Time + Hand-off Time.
+   Even if individual stages have different underlying distributions (e.g., transit 
+   delays or kitchen prep), their combined sum inevitably converges to a Gaussian 
+   normal distribution.
+
+2. Distinct Central Tendency:
+   Most standard restaurant orders in a metropolitan sector are geographically 
+   bounded within a 3 to 6 km delivery radius, naturally anchoring delivery times 
+   tightly around an expected central mean (e.g., mu = 32 minutes).
+
+3. Symmetric Probability Decay:
+   - Super-fast orders (< 15 mins) require every single step to go perfectly 
+     without any delay (empty roads, instantaneous prep).
+   - Super-slow orders (> 50 mins) require multiple compound bottlenecks 
+     (heavy rain, kitchen rush, rider flat tire).
+   - Both extreme tail events are equally rare, creating the classic bell curve.
+
+--------------------------------------------------------------------------------
+5. Alternative Real-World Example (Spotify Song Durations):
+--------------------------------------------------------------------------------
+For a curated pop playlist on Spotify, song durations also follow an approximate 
+normal distribution (mu = 3.2 minutes, sigma = 0.4 minutes). Commercial radio 
+standards and streaming algorithm incentives penalize tracks that are excessively 
+short (< 1.5 mins) or excessively long (> 5 mins), causing creators to produce 
+tracks clustered symmetrically around the 3-minute mean.
+

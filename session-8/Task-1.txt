@@ -1,0 +1,79 @@
+TASK 1: Function calculate_probability() and Coin Toss Probability
+================================================================================
+
+1. Problem Description:
+--------------------------------------------------------------------------------
+Write a Python function calculate_probability(event_count, total_outcomes) that 
+returns the probability of an event, and use it to find the probability of 
+getting 'Heads' when tossing a coin.
+
+--------------------------------------------------------------------------------
+2. Theoretical Framework & Probability Formula:
+--------------------------------------------------------------------------------
+The classical definition of probability applies when all outcomes in a sample 
+space S are equally likely (mutually exclusive and collectively exhaustive).
+
+Formula:
+                 Number of favorable outcomes for event E     n(E)
+      P(E) = ----------------------------------------------- = ----
+                 Total number of possible outcomes in S       n(S)
+
+Axioms of Probability:
+1. Non-negativity: 0 <= P(E) <= 1 for any event E.
+2. Certainty: P(S) = 1 (the probability of the entire sample space is 1).
+3. Complement Rule: P(E') = 1 - P(E).
+
+--------------------------------------------------------------------------------
+3. Coin Toss Analysis:
+--------------------------------------------------------------------------------
+- Experiment: Tossing an unbiased, fair two-sided coin once.
+- Sample Space (S):
+      S = { 'Heads', 'Tails' }
+      Total outcomes, n(S) = 2
+
+- Event (E): Getting 'Heads'
+      Favorable outcomes, E = { 'Heads' }
+      Favorable outcome count, n(E) = 1
+
+- Probability Calculation:
+      P('Heads') = n(E) / n(S) = 1 / 2 = 0.50 (or 50%)
+
+--------------------------------------------------------------------------------
+4. Python Implementation (task1_coin_toss.py):
+--------------------------------------------------------------------------------
+```python
+def calculate_probability(event_count: int, total_outcomes: int) -> float:
+    """
+    Returns the probability of an event occurring in an equally likely sample space.
+    P(E) = event_count / total_outcomes
+    """
+    if total_outcomes <= 0:
+        raise ValueError("Total outcomes must be greater than zero.")
+    if event_count < 0 or event_count > total_outcomes:
+        raise ValueError("Event count must be between 0 and total_outcomes.")
+    
+    return event_count / total_outcomes
+
+# Application to Coin Toss:
+sample_space = ['Heads', 'Tails']
+total_outcomes = len(sample_space)     # 2
+event_count = 1                        # Favorable outcome: 'Heads'
+
+prob_heads = calculate_probability(event_count, total_outcomes)
+print(f"Probability of getting 'Heads': {prob_heads:.2f} ({prob_heads * 100:.1f}%)")
+```
+
+--------------------------------------------------------------------------------
+5. Output & Verification:
+--------------------------------------------------------------------------------
+- Target Event                 : 'Heads'
+- Total Possible Outcomes (n)  : 2 ('Heads', 'Tails')
+- Favorable Outcomes (k)       : 1 ('Heads')
+- Decimal Probability          : 0.5000
+- Percentage Probability       : 50.00%
+- Fractional Representation    : 1/2
+
+Conclusion:
+When tossing a fair coin, each face has an identical likelihood of 0.5 (50%), 
+confirming the law of equal likelihood for unbiased binary experiments.
+

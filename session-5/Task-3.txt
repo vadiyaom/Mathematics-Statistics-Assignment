@@ -1,0 +1,10 @@
+TASK 3: Why Use Sampling Instead of a Full Census for Swiggy Delivery Times?
+=================================================================================
+
+Question:
+Imagine you are analyzing food delivery times on Swiggy. Explain in 2-3 sentences why you would use sampling instead of collecting data from every single order ever made.
+
+Explanation (2-3 sentences):
+1. Analyzing every single order ever made across hundreds of millions of historical transactions is computationally prohibitive, slow, and expensive in terms of database storage and processing power.
+2. Older historical data from years ago is practically obsolete and unhelpful because city road infrastructure, traffic conditions, restaurant kitchens, and dispatch algorithms constantly evolve.
+3. A well-designed representative sample of recent orders (e.g., a few thousand orders across peak and non-peak hours) provides practically identical statistical accuracy with high confidence at a tiny fraction of the time and computational cost.

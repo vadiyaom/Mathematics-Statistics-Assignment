@@ -1,0 +1,102 @@
+TASK 2: Swiggy Premium Restaurant Discount - Bayes' Theorem Analysis
+================================================================================
+
+1. Problem Scenario:
+--------------------------------------------------------------------------------
+On Swiggy, 10% of restaurants are 'premium', and 80% of premium restaurants 
+offer a discount, while only 20% of regular restaurants do. If you see a discount, 
+use Bayes' theorem in code to find the probability that the restaurant is premium.
+
+Hint: Define prior, likelihood, and evidence in your code with comments.
+
+--------------------------------------------------------------------------------
+2. Definition of Variables and Events:
+--------------------------------------------------------------------------------
+- Let Event H_premium = The restaurant is 'Premium'
+- Let Event H_regular = The restaurant is 'Regular' (H_regular = not H_premium)
+- Let Event E_discount= The restaurant offers a 'Discount' (Observed Evidence)
+
+Given Probabilities:
+1. Prior Probabilities:
+   - P(Premium) = 0.10  (10% of restaurants on Swiggy are premium)
+   - P(Regular) = 0.90  (90% of restaurants are regular)
+
+2. Likelihood Probabilities:
+   - P(Discount | Premium) = 0.80  (80% of premium restaurants offer a discount)
+   - P(Discount | Regular) = 0.20  (20% of regular restaurants offer a discount)
+
+--------------------------------------------------------------------------------
+3. Mathematical Derivation:
+--------------------------------------------------------------------------------
+Step 1: Compute Total Marginal Evidence P(Discount)
+Using the Law of Total Probability:
+      P(Discount) = P(Premium) * P(Discount | Premium) + P(Regular) * P(Discount | Regular)
+                  = (0.10 * 0.80) + (0.90 * 0.20)
+                  = 0.08 + 0.18
+                  = 0.26 (or 26% of all restaurants on Swiggy offer a discount)
+
+Step 2: Apply Bayes' Theorem to Find Posterior P(Premium | Discount)
+                                  P(Premium) * P(Discount | Premium)
+      P(Premium | Discount) = -----------------------------------------
+                                             P(Discount)
+
+                                          0.10 * 0.80
+                            = -----------------------------------
+                                             0.26
+
+                                             0.08
+                            = -----------------------------------
+                                             0.26
+
+                            = 4 / 13
+                            approx 0.30769 (or 30.77%)
+
+--------------------------------------------------------------------------------
+4. Python Implementation (task2_swiggy_bayes.py):
+--------------------------------------------------------------------------------
+```python
+# 1. Define Priors
+prior_premium = 0.10               # P(Premium)
+prior_regular = 1.0 - 0.10         # P(Regular) = 0.90
+
+# 2. Define Likelihoods
+likelihood_disc_given_prem = 0.80  # P(Discount | Premium)
+likelihood_disc_given_reg  = 0.20  # P(Discount | Regular)
+
+# 3. Calculate Marginal Evidence: P(Discount)
+evidence_discount = (prior_premium * likelihood_disc_given_prem) + \
+                    (prior_regular * likelihood_disc_given_reg)
+
+# 4. Calculate Posterior using Bayes' Theorem
+posterior_premium = (prior_premium * likelihood_disc_given_prem) / evidence_discount
+
+print(f"Total Evidence P(Discount)        : {evidence_discount:.4f} (26.0%)")
+print(f"Posterior P(Premium | Discount)    : {posterior_premium:.5f} ({posterior_premium * 100:.2f}%)")
+```
+
+--------------------------------------------------------------------------------
+5. Intuitive Explanation & The Base-Rate Effect:
+--------------------------------------------------------------------------------
+Why is the probability only 30.77% when 80% of premium restaurants give discounts?
+
+Consider a concrete population of 100 Swiggy restaurants:
+- 10 are Premium:
+  80% of them offer discounts ==> 8 discounted premium restaurants.
+- 90 are Regular:
+  20% of them offer discounts ==> 18 discounted regular restaurants.
+
+Total restaurants with discounts = 8 + 18 = 26 restaurants.
+Among these 26 discounted restaurants:
+- Only 8 are Premium.
+- 18 are Regular.
+
+Therefore:
+P(Premium | Discount) = 8 / 26 = 4 / 13 = **30.77%**.
+
+Conclusion:
+Because regular restaurants heavily dominate the market (90% base rate), even a 
+small discount rate of 20% among regular restaurants produces more total discounted 
+restaurants (18) than the premium group produces (8). 
+Observing a discount triples our initial belief from 10% to 30.77%, but it remains 
+more likely that the restaurant is regular (~69.23%).
+
